@@ -1,0 +1,23 @@
+Start:
+
+Install tailwind:
+
+=> npm install -D tailwindcss
+=> npm init -y
+=> created file: src and public in ./
+=> created in public/ => index.html, script.js and style.css => bind script.js and style.css in index.html
+=> created in src/ => tailwind.css
+=> in tailwind.css => add => @tailwind base; @tailwind components; @tailwind utilities;
+=> in package.jsoon => add "dev"=> 
+  "scripts": {
+    "dev": "npx tailwindcss-cli@latest build -i ./src/tailwind.css -o ./public/style.css"
+  },
+=> terminal => npm run dev  => install latest build tailwind css in style.css
+
+Install Typescript:
+
+=> npm install -g typescript
+=> test typescript is install with => typescript
+=> init ts with => tsc --init
+=> tsconfig.json => outDir (remove the comment"") =>  "outDir": "public"  => for build js in in ./build
+=> tsc compiled ts => js
