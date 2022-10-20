@@ -9,17 +9,42 @@
     }
  }
 
- @media screen and (max-width:360px) {
+@media screen and (max-width:420px){
+   .bg-current-pokemon-full {
+         width: 100vw;
+         height: 100vh;
+         background-color: #FB5584;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         border-radius: 20px;
+      }
+}
+
+
+
+ @media screen and (max-width:359px) {
     html {
        font-size: 0.88875rem;
+    }   
+ }
+
+
+ @media screen and (max-width:320px) {
+    html {
+       font-size: 0.7777rem;
     }
+
  }
 
  @media screen and (max-width:280px) {
     html {
        font-size: 0.7777rem;
     }
+
  }
+
+
 
  .h-640 {
     height: 40rem;
