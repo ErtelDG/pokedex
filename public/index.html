@@ -106,6 +106,155 @@
             <div name="title-stats"
                class="font-bold text-sm w-78 h-4 flex items-center justify-center text-color-type-psychic">Base Stats
             </div>
+            <!-- base stats -->
+            <div name="base-stats-current-pokemon" class="flex p-0 gap-2 w-78 h-25">
+               <div name="base-stats-name" class="flex flex-col p-0 w-7 h-25">
+                  <div name="HP" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">HP
+                  </div>
+                  <div name="ATK" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">ATK
+                  </div>
+                  <div name="DEF" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">DEF
+                  </div>
+                  <div name="SATK" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">SATK
+                  </div>
+                  <div name="SDEF" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">SDEF
+                  </div>
+                  <div name="SPD" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">SPD
+                  </div>
+               </div>
+               <div name="line-vertical" class="flex flex-col py-0 px-1 w-2 h-25">
+                  <div name="line-vertical-image" class="h-25 w-0.5 bg-color-type-light-gray"></div>
+               </div>
+               <div name="base-stats-level" class="flex flex-col w-5 h-25">
+                  <div name="base-stats-level"
+                     class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                  <div name="base-stats-level"
+                     class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                  <div name="base-stats-level"
+                     class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                  <div name="base-stats-level"
+                     class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                  <div name="base-stats-level"
+                     class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                  <div name="base-stats-level"
+                     class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+               </div>
+               <div class="w-full h-25 flex flex-col">
+                  <div name="loader" class="loader relative h-2 w-full m-1">
+                     <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
+                     <div name="loading_2" class="loading_HP absolute h-full bg-color-type-psychic top-0">
+                        <style type="text/css">
+                           .loading_HP {
+                              position: absolute;
+                              width: 50%;
+                              top: 0px;
+                              animation: bounceHP 2s linear;
+                            } 
+                           @keyframes bounceHP {
+                              0% {width: 0%;
+                              }
+                              100% {
+                                 width: 50%;
+                              }
+                           }
+                        </style>
+                     </div>
+                  </div>
+                  <div name="loader" class="loader relative h-2 w-full m-1">
+                     <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
+                     <div name="loading_2" class="loading_ATK absolute h-full bg-color-type-psychic top-0"><style type="text/css">
+                           .loading_ATK {
+                              position: absolute;
+                              width: 40%;
+                              top: 0px;
+                              animation: bounceATK 2s linear;
+                            } 
+                           @keyframes bounceATK {
+                              0% {width: 0%;
+                              }
+                              100% { 
+                                 width: 40%;
+                              }
+                           }
+                        </style></div>
+                  </div>
+                  <div name="loader" class="loader relative h-2 w-full m-1">
+                     <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
+                     <div name="loading_2" class="loading_DEF absolute h-full bg-color-type-psychic top-0"><style type="text/css">
+                           .loading_DEF {
+                              position: absolute;
+                              width: 60%;
+                              top: 0px;
+                              animation: bounceDEF 2s linear;
+                            } 
+                           @keyframes bounceDEF {
+                              0% {width: 0%;
+                              }
+                              100% {
+                                 width: 60%;
+                              }
+                           }
+                        </style></div>
+                  </div>
+                  <div name="loader" class="loader relative h-2 w-full m-1">
+                     <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
+                     <div name="loading_2" class="loading_SATK absolute h-full bg-color-type-psychic top-0"><style type="text/css">
+                           .loading_SATK {
+                              position: absolute;
+                              width: 90%;
+                              top: 0px;
+                              animation: bounceSATK 2s linear;
+                            } 
+                           @keyframes bounceSATK {
+                              0% {width: 0%;
+                              }
+                              100% {
+                                 width: 90%;
+                              }
+                           }
+                        </style></div>
+                  </div>
+                  <div name="loader" class="loader relative h-2 w-full m-1">
+                     <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
+                     <div name="loading_2" class="loading_SDEF absolute h-full bg-color-type-psychic top-0"><style type="text/css">
+                           .loading_SDEF {
+                              position: absolute;
+                              width: 72%;
+                              top: 0px;
+                              animation: bounceSDEF 2s linear;
+                            } 
+                           @keyframes bounceSDEF {
+                              0% {width: 0%;
+                              }
+                              100% {
+                                 width: 72%;
+                              }
+                           }
+                        </style></div>
+                  </div>
+                  <div name="loader" class="loader relative h-2 w-full m-1">
+                     <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
+                     <div name="loading_2" class="loading_SPD absolute h-full bg-color-type-psychic top-0"><style type="text/css">
+                           .loading_SPD {
+                              position: absolute;
+                              width: 25%;
+                              top: 0px;
+                              animation: bounceSPD 2s linear;
+                            } 
+                           @keyframes bounceSPD {
+                              0% {width: 0%;
+                              }
+                              100% {
+                                 width: 25%;
+                              }
+                           }
+                        </style></div>
+                  </div>
+               </div>
+
+            </div>
+
+
 
          </div>
 
