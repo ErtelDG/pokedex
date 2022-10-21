@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="style.css">
    <link rel="stylesheet" href="fonts.css">
-   <link rel="stylesheet" href="vanillaStyle.css">
+
    <link rel="shortcut icon" href="#" type="image/x-icon">
    <title>Pokedex</title>
 </head>
@@ -17,12 +17,12 @@
    <div id="renderMain" class="render w-screen h-screen flex justify-center items-center text-color-type-dark-gray">
       <!-- all pokemon start side background mobile -->
       <div name="background-all-pokemon-start-side-mobile"
-         class="bg-all-pokemon-start-side-full flex justify-center items-center h-screen w-screen bg-color-type-background">
+         class="bg-all-pokemon-start-side-full flex justify-center items-start h-screen w-screen bg-color-type-background">
          <!-- all pokemon start side  -->
          <div id="all-pokemon-start-side" name="all-pokemon-start-side"
-            class="w-90 h-640 bg-color-type-background relative border border-solid border-gray-300 border-r-075rem gap-2 flex flex-col items-center">
+            class="w-screen sm:w-11/12 2xl:w-4/6 h-min sm:mt-4 bg-color-type-background relative sm:border sm:border-solid sm:border-gray-300 border-r-075rem gap-2 flex flex-col items-center">
             <!-- all pokemon header-->
-            <div name="header-pokedex" class="flex flex-row mt-4 mx-4 py-0 px-0 gap-4 w-82 h-8">
+            <div name="header-pokedex" class="flex flex-row mt-4 mx-4 py-0 px-0 gap-4 w-82 md:w-2/5 h-8">
                <div name="icon-pokeball" class="w-8 h-8 flex justify-center items-center"><img class="object-center"
                      src="img/Pokeball-Icon.png" alt="">
                </div>
@@ -44,24 +44,24 @@
             </div>
             <!-- all pokemon generations -->
             <div name="all-pokemon-generations"
-               class="w-82 h-12 border border-solid border-gray-100 border-r-05rem  bg-white shadow-sm">
-               <div name="generations" class="w-full h-5 font-semibold text-sm text-center text-color-type-dark-gray">
+               class="w-82 md:w-2/5 h-12 md:h-16 border border-solid border-gray-100 border-r-05rem  bg-white shadow-sm">
+               <div name="generations" class="w-full h-5 md:h-7 font-semibold text-sm text-center text-color-type-dark-gray border-b-2">
                   Generation</div>
-               <div name="gen-I-IX" class="w-full h-7 flex justify-between">
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">I</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">II</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">III</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">IV</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">V</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">VI</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">VII</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center border-r">VIII</div>
-                  <div class="font-semibold text-sm w-9 h-full text-center">IX</div>
+               <div name="gen-I-IX" class="w-full h-7 md:h-9 flex text-center">
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">I</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">II</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">III</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">IV</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">V</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">VI</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">VII</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">VIII</div>
+                  <div class="w-full flex items-center justify-center font-semibold text-sm h-full">IX</div>
                </div>
             </div>
             <!-- pokemon search bar -->
             <div name="pokemon-search-bar"
-               class="flex py-1 px-2 gap-4 w-82 h-6 justify-center bg-white border border-solid border-gray-100 border-r-05rem  shadow-sm">
+               class="flex py-1 px-2 gap-4 w-82 md:w-2/5 h-8 justify-center bg-white border border-solid border-gray-100 border-r-05rem  shadow-sm">
                <div class="w-full h-full gap-2 flex items-center justify-center">
                   <div class="w-4 h-4 flex justify-center items-center">
                      <svg width="0.75rem" height="0.75rem" viewBox="0 0 8 8" fill="none"
@@ -77,7 +77,7 @@
 
             <!-- HERE GO RENDER SMALL CARDS!! -->
             <!-- render pokemon cards small -->
-            <div id="renderAllPokemonSmall" class="w-82 h-120 flex wrap justify-between">
+            <div id="renderAllPokemonSmall" class="w-82 md:w-full md:px-4 md:mb-4 h-min flex wrap justify-between">
                <div name="show-pokemon-card"
                   class="flex flex-col w-26 h-28 bg-white border border-solid border-gray-100 border-r-05rem shadow-s">
                   <div name="pokemon-number" class="w-full h-4 flex justify-end">
@@ -92,7 +92,7 @@
                      <div name="name-text" class="font-normal text-xxs flex items-center text-center">Aron</div>
                   </div>
                </div>
-                        
+
             </div>
 
          </div>
