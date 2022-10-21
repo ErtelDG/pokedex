@@ -12,7 +12,7 @@
    <title>Pokedex</title>
 </head>
 
-<body class="m-0 w-screen h-screen">
+<body onload="init()" class="m-0 w-screen h-screen">
 
    <div id="renderMain" class="render w-screen h-screen flex justify-center items-center text-color-type-dark-gray">
       <!-- all pokemon start side background mobile -->
@@ -45,7 +45,8 @@
             <!-- all pokemon generations -->
             <div name="all-pokemon-generations"
                class="w-82 md:w-2/5 h-12 md:h-16 border border-solid border-gray-100 border-r-05rem  bg-white shadow-sm">
-               <div name="generations" class="w-full h-5 md:h-7 font-semibold text-sm text-center text-color-type-dark-gray border-b-2">
+               <div name="generations"
+                  class="w-full h-5 md:h-7 font-semibold text-sm text-center text-color-type-dark-gray border-b-2">
                   Generation</div>
                <div name="gen-I-IX" class="w-full h-7 md:h-9 flex text-center">
                   <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r">I</div>
