@@ -3,19 +3,37 @@
 let url = "https://pokeapi.co/api/v2/pokemon/"; //poke api v2 url
 let currentPokemonAsJson;
 let found = true; //found a other pokemon?
+let counterRequestFailToApi = 0;
 //to fetch poke api values
 async function getPokemonValueByApi(x) {
-    let response = await fetch(url + x.toString());
-    if (response.status == 404) {
-        found = false;
+    let response;
+    try {
+        response = await fetch(url + x.toString());
+        return (currentPokemonAsJson = await response.json());
+        console.log(`Request ok with number ${x}`);
     }
-    return (currentPokemonAsJson = await response.json());
+    catch {
+        errorFunction(x, response);
+    }
+}
+async function errorFunction(x, response) {
+    counterRequestFailToApi++;
+    currentPokemonAsJson = { id: x, status: "fail" };
+    if (counterRequestFailToApi >= 5) {
+        found = false;
+        console.log(`Request to API was stop, you had min.${counterRequestFailToApi} fail request`);
+    }
+    console.log(`Request not OK with number ${x}`);
 }
 //greated data values we need for the current pokmon from the api
 async function greatCurrentPokemonValuesFromApi() {
-    for (let i = 905; found === true; i++) {
+    for (let i = 906; found === true; i++) {
         await getPokemonValueByApi(i);
-        if (currentPokemonAsJson != null) {
+        if (currentPokemonAsJson["status"] == "fail") {
+            let pokemonId = parseInt(currentPokemonAsJson["id"]);
+            let pokemonName = "notfound";
+        }
+        else if (currentPokemonAsJson != null) {
             let pokemonId = parseInt(currentPokemonAsJson["id"]);
             let pokemonName = currentPokemonAsJson["name"];
             let pokemonImage = currentPokemonAsJson["sprites"]["front_shiny"];
