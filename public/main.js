@@ -9,6 +9,8 @@ async function greatCurrentPokemonValuesFromApi() {
         renderSmallPokemonCard(i);
     }
 }
+//sort Pokemon from A-Z
+sortPokemonAZ();
 //go start rendering
 async function init() {
     clearContainerWithSmallPokemonCards();

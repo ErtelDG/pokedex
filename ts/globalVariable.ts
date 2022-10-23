@@ -1,6 +1,6 @@
 // global variable who need in the project for all and rendering!
 let currentPokemon: number = 1;
-let maxPokemons: number = 100;
+let maxPokemons: number = 20;
 
 //ulr´s api
 let url1: string = "https://pokeapi.co/api/v2/pokemon/"; //poke api v2 url for stats
