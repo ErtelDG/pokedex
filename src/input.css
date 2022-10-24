@@ -157,6 +157,10 @@
       height: 25.75rem;
    }
 
+   .h-9-10 {
+      height: 90%;
+   }
+
    .text-xxs {
       font-size: 0.625rem
          /* 10px */
@@ -363,6 +367,7 @@
    .text-color-type-background {
       color: #F7F7F7;
    }
+
 
 
 }

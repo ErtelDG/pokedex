@@ -11,8 +11,6 @@ async function greatCurrentPokemonValuesFromApi() {
     }
     intermediateValue = intermediateValue + 181;
 }
-//sort Pokemon from A-Z
-sortPokemonAZ();
 //Hier weiter machen!!!!
 function showBigPokemonCard(i) {
     alert(i);
@@ -22,5 +20,5 @@ async function init() {
     clearContainerWithSmallPokemonCards();
     await loadPokemonBaseJSON();
     await sortPokemonToGeneration();
-    renderSmallPokemonCard(5);
+    renderSmallPokemonCard(1);
 }

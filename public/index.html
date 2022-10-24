@@ -19,7 +19,7 @@
          class="relative bg-all-pokemon-start-side-full flex flex-col items-center justify-center h-screen w-screen bg-color-type-background">
          <!-- all pokemon start side  -->
          <div id="all-pokemon-start-side" name="all-pokemon-start-side"
-            class="w-screen sm:w-11/12 2xl:w-4/6 h-min sm:my-4 bg-color-type-background sm:border sm:border-solid sm:border-gray-300 border-r-075rem gap-2 flex flex-col items-center md:gap-y-6">
+            class="w-screen sm:w-11/12 2xl:w-4/6 h-full sm:my-4 bg-color-type-background sm:border sm:border-solid sm:border-gray-300 border-r-075rem gap-2 flex flex-col items-center md:gap-y-6">
             <div class="w-full flex flex-col items-center gap-4 bg-color-type-background  border-r-075rem">
                <!-- all pokemon header-->
                <div name="header-pokedex" class="flex flex-row mt-4 mx-4 py-0 px-0 gap-4 w-82 md:w-2/5 h-8">
@@ -29,19 +29,21 @@
                   <div name="headline-pokedex-start-side"
                      class="font-bold text-2xl w-full flex items-center justify-center text-center text-color-type-dark-gray">
                      Pokédex</div>
-                  <div name="sort-a-z"
-                     class="flex items-center px-2 py-2 w-8 h-8 rounded-md cursor-pointer hover:bg-gray-200 "
-                     onclick="sortPokemonAZ()">
-                     <div
-                        class="font-semibold text-xxs text-line-xxs text-center text-color-type-dark-gray w-2 h-full flex justify-center items-center">
-                        A Z</div>
-                     <div class="h-8 w-8 flex justify-center items-center">
-                        <svg width="1rem" height="1rem" viewBox="0 0 9 16" fill="none"
-                           xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M9.01733 11.1082L8.76483 10.8557C8.59747 10.6883 8.32611 10.6883 8.15872 10.8557L5.17857 13.8531V0.428572C5.17857 0.191893 4.98668 0 4.75 0H4.39285C4.15617 0 3.96428 0.191893 3.96428 0.428572V13.8531L0.984128 10.8557C0.81677 10.6883 0.545412 10.6883 0.378019 10.8557L0.125518 11.1082C-0.0418394 11.2756 -0.0418394 11.5469 0.125518 11.7143L4.26839 15.8745C4.43575 16.0418 4.7071 16.0418 4.8745 15.8745L9.01737 11.7143C9.18472 11.5469 9.18472 11.2756 9.01733 11.1082V11.1082Z"
-                              fill="#212121" />
-                        </svg>
+                  <div id="sortBtnAZ">
+                     <div name="sort-a-z"
+                        class="flex items-center px-2 py-2 w-8 h-8 rounded-md cursor-pointer hover:bg-gray-200 "
+                        onclick="sortPokemonAZ('generation1')">
+                        <div
+                           class="font-semibold text-xxs text-line-xxs text-center text-color-type-dark-gray w-2 h-full flex justify-center items-center">
+                           A Z</div>
+                        <div class="h-8 w-8 flex justify-center items-center">
+                           <svg width="1rem" height="1rem" viewBox="0 0 9 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                 d="M9.01733 11.1082L8.76483 10.8557C8.59747 10.6883 8.32611 10.6883 8.15872 10.8557L5.17857 13.8531V0.428572C5.17857 0.191893 4.98668 0 4.75 0H4.39285C4.15617 0 3.96428 0.191893 3.96428 0.428572V13.8531L0.984128 10.8557C0.81677 10.6883 0.545412 10.6883 0.378019 10.8557L0.125518 11.1082C-0.0418394 11.2756 -0.0418394 11.5469 0.125518 11.7143L4.26839 15.8745C4.43575 16.0418 4.7071 16.0418 4.8745 15.8745L9.01737 11.7143C9.18472 11.5469 9.18472 11.2756 9.01733 11.1082V11.1082Z"
+                                 fill="#212121" />
+                           </svg>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -52,27 +54,36 @@
                      class="w-full h-5 md:h-7 font-semibold text-sm text-center text-color-type-dark-gray border-b-2">
                      Generation</div>
                   <div name="gen-I-IX" class="w-full h-7 md:h-9 flex text-center">
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(1)">I</div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(2)">II</div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(3)">III
+                     <div id="renderGenerationBtn1"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer rounded-bl bg-gray-200"
+                        onclick="renderSmallPokemonCard(1)">I</div>
+                     <div id="renderGenerationBtn2"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer"
+                        onclick="renderSmallPokemonCard(2)">II</div>
+                     <div id="renderGenerationBtn3"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer"
+                        onclick="renderSmallPokemonCard(3)">III
                      </div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(4)">IV</div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(5)">V</div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(6)">VI</div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(7)">VII
+                     <div id="renderGenerationBtn4"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer"
+                        onclick="renderSmallPokemonCard(4)">IV</div>
+                     <div id="renderGenerationBtn5"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer"
+                        onclick="renderSmallPokemonCard(5)">V</div>
+                     <div id="renderGenerationBtn6"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer"
+                        onclick="renderSmallPokemonCard(6)">VI</div>
+                     <div id="renderGenerationBtn7"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer"
+                        onclick="renderSmallPokemonCard(7)">VII
                      </div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full border-r"
-                        onclick="renderGeneration(8)">VIII
+                     <div id="renderGenerationBtn8"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full border-r cursor-pointer"
+                        onclick="renderSmallPokemonCard(8)">VIII
                      </div>
-                     <div class="w-full flex items-center justify-center font-semibold text-sm h-full"
-                        onclick="renderGeneration(9)">IX</div>
+                     <div id="renderGenerationBtn9"
+                        class="w-full flex items-center justify-center font-semibold text-sm h-full cursor-pointer rounded-br"
+                        onclick="renderSmallPokemonCard(9)">IX</div>
                   </div>
                </div>
                <!-- pokemon search bar -->
@@ -95,7 +106,7 @@
             <!-- HERE GO RENDER SMALL CARDS!! -->
             <!-- render pokemon cards small -->
             <div id="renderAllPokemonSmall"
-               class="w-full w-82 md:w-full md:px-4 h-96 flex wrap justify-around overflow-x-hidden">
+               class="w-82 md:w-full md:px-4 h-96 md:h-full flex wrap justify-around overflow-x-hidden">
             </div>
 
          </div>

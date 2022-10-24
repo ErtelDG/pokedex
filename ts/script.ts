@@ -208,34 +208,34 @@ async function sortPokemonToGeneration() {
       k <= Object.keys(localPokemonsData).length;
       k++
    ) {
-      const generation = localPokemonsData[k]["pokemonGeneration"];
+      const generation = await localPokemonsData[k]["pokemonGeneration"];
       switch (generation) {
          case "generation-i":
-            generation1[k] = localPokemonsData[k];
+            generation1[k] = await localPokemonsData[k];
             break;
          case "generation-ii":
-            generation2[k] = localPokemonsData[k];
+            generation2[k] = await localPokemonsData[k];
             break;
          case "generation-iii":
-            generation3[k] = localPokemonsData[k];
+            generation3[k] = await localPokemonsData[k];
             break;
          case "generation-iv":
-            generation4[k] = localPokemonsData[k];
+            generation4[k] = await localPokemonsData[k];
             break;
          case "generation-v":
-            generation5[k] = localPokemonsData[k];
+            generation5[k] = await localPokemonsData[k];
             break;
          case "generation-vi":
-            generation6[k] = localPokemonsData[k];
+            generation6[k] = await localPokemonsData[k];
             break;
          case "generation-vii":
-            generation7[k] = localPokemonsData[k];
+            generation7[k] = await localPokemonsData[k];
             break;
          case "generation-viii":
-            generation8[k] = localPokemonsData[k];
+            generation8[k] = await localPokemonsData[k];
             break;
          case "generation-ix":
-            generation9[k] = localPokemonsData[k];
+            generation9[k] = await localPokemonsData[k];
             break;
          default:
             break;
@@ -244,82 +244,159 @@ async function sortPokemonToGeneration() {
 }
 
 // redner small pokemon cards
-function renderSmallPokemonCard(i: number) {
+async function renderSmallPokemonCard(i: number) {
    let generationSelected;
    switch (i) {
       case 1:
-         generationSelected = generation1;
+         generationSelected = await generation1;
          break;
       case 2:
-         generationSelected = generation2;
+         generationSelected = await generation2;
          break;
       case 3:
-         generationSelected = generation3;
+         generationSelected = await generation3;
          break;
       case 4:
-         generationSelected = generation4;
+         generationSelected = await generation4;
          break;
       case 5:
-         generationSelected = generation5;
+         generationSelected = await generation5;
          break;
       case 6:
-         generationSelected = generation6;
+         generationSelected = await generation6;
          break;
       case 7:
-         generationSelected = generation7;
+         generationSelected = await generation7;
          break;
       case 8:
-         generationSelected = generation8;
+         generationSelected = await generation8;
          break;
       case 9:
-         generationSelected = generation9;
+         generationSelected = await generation9;
          break;
       default:
          break;
    }
-   console.log(generationSelected);
+
+   for (let counterBtn = 1; counterBtn < 10; counterBtn++) {
+      if (counterBtn == i) {
+         let addClass = document.getElementById("renderGenerationBtn" + i);
+         if (addClass != null) {
+            addClass.classList.add("bg-gray-200");
+         }
+      } else {
+         let removeClass = document.getElementById(
+            "renderGenerationBtn" + counterBtn
+         );
+         if (removeClass != null) {
+            removeClass.classList.remove("bg-gray-200");
+         }
+      }
+   }
+   createRenderSmallPokemonCard(generationSelected);
+   async function createRenderSmallPokemonCard(generationSelected: any) {
+      if (containerRenderAllPokemonSmall != null) {
+         containerRenderAllPokemonSmall.innerHTML = " ";
+         for (let j = 0; j <= Object.keys(generationSelected).length; j++) {
+            let generationKeyPosition: number = parseInt(
+               Object.keys(generationSelected)[j]
+            );
+            if ((await generationSelected[generationKeyPosition]) != null) {
+               let renderImage = await generationSelected[
+                  generationKeyPosition
+               ]["pokemonImage"];
+               let renderColor = await generationSelected[
+                  generationKeyPosition
+               ]["color"];
+               let renderGeneration = await generationSelected[
+                  generationKeyPosition
+               ]["pokemonGeneration"];
+               let renderId = await generationSelected[generationKeyPosition][
+                  "pokemonId"
+               ];
+               let renderName = await generationSelected[generationKeyPosition][
+                  "pokemonName"
+               ];
+               containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
+                  renderId,
+                  renderName,
+                  renderImage,
+                  renderColor,
+                  renderGeneration
+               );
+            }
+         }
+      }
+   }
+
+   let sortBtn = document.getElementById("sortBtnAZ");
+   if (sortBtn != null) {
+      sortBtn.innerHTML = `
+                     <div name="sort-a-z"
+                        class="flex items-center px-2 py-2 w-8 h-8 rounded-md cursor-pointer hover:bg-gray-200 "
+                        onclick="sortPokemonAZ(generation${i})">
+                        <div
+                           class="font-semibold text-xxs text-line-xxs text-center text-color-type-dark-gray w-2 h-full flex justify-center items-center">
+                           A Z</div>
+                        <div class="h-8 w-8 flex justify-center items-center">
+                           <svg width="1rem" height="1rem" viewBox="0 0 9 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                 d="M9.01733 11.1082L8.76483 10.8557C8.59747 10.6883 8.32611 10.6883 8.15872 10.8557L5.17857 13.8531V0.428572C5.17857 0.191893 4.98668 0 4.75 0H4.39285C4.15617 0 3.96428 0.191893 3.96428 0.428572V13.8531L0.984128 10.8557C0.81677 10.6883 0.545412 10.6883 0.378019 10.8557L0.125518 11.1082C-0.0418394 11.2756 -0.0418394 11.5469 0.125518 11.7143L4.26839 15.8745C4.43575 16.0418 4.7071 16.0418 4.8745 15.8745L9.01737 11.7143C9.18472 11.5469 9.18472 11.2756 9.01733 11.1082V11.1082Z"
+                                 fill="#212121" />
+                           </svg>
+                        </div>
+                     </div>`;
+   }
+}
+
+async function sortPokemonAZ(generation: any) {
+   let sortArray: any[] = [];
+
    if (containerRenderAllPokemonSmall != null) {
-      for (let j = 1; j <= Object.keys(generationSelected).length; j++) {
-         let generationKeyPosition: number = parseInt(
-            Object.keys(generationSelected)[j]
-         );
-         let renderId = generationSelected[generationKeyPosition]["pokemonId"];
-         let renderName =
-            generationSelected[generationKeyPosition]["pokemonName"];
-         let renderImage =
-            generationSelected[generationKeyPosition]["pokemonImage"];
-         let renderColor = generationSelected[generationKeyPosition]["color"];
-         let renderGeneration =
-            generationSelected[generationKeyPosition]["pokemonGeneration"];
-         containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
-            renderId,
-            renderName,
-            renderImage,
-            renderColor,
-            renderGeneration
-         );
+      containerRenderAllPokemonSmall.innerHTML = "";
+
+      let startFirstObject = generation[Object.keys(generation)[0]];
+
+      for (
+         let i = startFirstObject["pokemonId"];
+         i < startFirstObject["pokemonId"] + Object.keys(generation).length;
+         i++
+      ) {
+         sortArray.push([
+            await generation[i]["pokemonName"],
+            await generation[i]["pokemonId"],
+         ]);
+      }
+      sortArray.sort();
+
+      for (let j = 0; j < sortArray.length; j++) {
+         const element = sortArray[j][1];
+         renderSortPokemonCard(generation, generation[element]["pokemonId"]);
       }
    }
 }
 
-// sort small pokemon cards from A to Z
-function sortPokemonAZ() {
-   let sortArray: any[] = [];
-   for (let i = 1; i < Object.keys(localPokemonsData).length; i++) {
-      sortArray.push([
-         localPokemonsData[i]["pokemonName"],
-         localPokemonsData[i]["pokemonId"],
-      ]);
-   }
-   sortArray.sort();
+async function renderSortPokemonCard(generation: any, indexPokemon: any) {
+   console.log(indexPokemon);
+
    if (containerRenderAllPokemonSmall != null) {
       containerRenderAllPokemonSmall.innerHTML = "";
+      let renderImage = await generation[indexPokemon]["pokemonImage"];
+      let renderColor = await generation[indexPokemon]["color"];
+      let renderGeneration = await generation[indexPokemon][
+         "pokemonGeneration"
+      ];
+      let renderId = await generation[indexPokemon]["pokemonId"];
+      let renderName = await generation[indexPokemon]["pokemonName"];
+      containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
+         renderId,
+         renderName,
+         renderImage,
+         renderColor,
+         renderGeneration
+      );
    }
-   for (let j = 0; j < sortArray.length; j++) {
-      const element = sortArray[j];
-      renderSmallPokemonCard(element[1]);
-   }
-   sortArray = [];
 }
 
 //render next when coming to the bottom at the side
