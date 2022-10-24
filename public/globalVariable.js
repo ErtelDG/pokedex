@@ -26,6 +26,8 @@ let localPokemonsData = {};
 //variable for render contains
 //contain for small pokemon cards
 let containerRenderAllPokemonSmall = document.getElementById("renderAllPokemonSmall");
+//search Pokemon ID
+let pokemonsSearchId = document.getElementById("pokemonsSearchId");
 //container for big pokemon cards
 // => PLACEHOLDER!!!!!!!!!!!!!!!!!!!!!!!!
 // pokemon class

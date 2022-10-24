@@ -10,6 +10,9 @@
 
    <link rel="shortcut icon" href="#" type="image/x-icon">
    <title>Pokedex</title>
+
+
+
 </head>
 
 <body onload="init()" class="m-0 w-screen h-screen bg-color-type-background">
@@ -98,7 +101,17 @@
                               fill="#666666" />
                         </svg>
                      </div>
-                     <input placeholder="Search Pokemon" class="w-32 text-sm border-white focus:outline-none"></input>
+                     <form action="#" class="w-max">
+                        <label>
+                           <input class="w-max" placeholder="Search Pokemon" id="inputSearchPokemon" type="search"
+                              list="pokemonsSearchId" class="w-32 text-sm border-white focus:outline-none relative">
+                           <div>
+                              <datalist id="pokemonsSearchId">
+                              </datalist>
+                           </div>
+                        </label>
+                        <div id="resultPokemon"></div></input>
+                     </form>
                   </div>
                </div>
                <div class="w-full h-2 md:h-3 border-b-2"></div>
@@ -118,6 +131,7 @@
          <script src="globalVariable.js"></script>
          <script src="script.js"></script>
          <script src="main.js"></script>
+
 </body>
 
 </html>

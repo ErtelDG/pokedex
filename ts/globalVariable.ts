@@ -2,15 +2,15 @@
 let currentPokemon: number = 1;
 let intermediateValue: number = 181;
 let maxPokemons: number = 200;
-let generation1:any = {};
-let generation2:any = {};
-let generation3:any = {};
-let generation4:any = {};
-let generation5:any = {};
-let generation6:any = {};
-let generation7:any = {};
-let generation8:any = {};
-let generation9:any = {};
+let generation1: any = {};
+let generation2: any = {};
+let generation3: any = {};
+let generation4: any = {};
+let generation5: any = {};
+let generation6: any = {};
+let generation7: any = {};
+let generation8: any = {};
+let generation9: any = {};
 
 //ulr´s api
 let url1: string = "https://pokeapi.co/api/v2/pokemon/"; //poke api v2 url for stats
@@ -32,6 +32,8 @@ let localPokemonsData: any = {};
 let containerRenderAllPokemonSmall = document.getElementById(
    "renderAllPokemonSmall"
 );
+//search Pokemon ID
+let pokemonsSearchId = document.getElementById("pokemonsSearchId");
 //container for big pokemon cards
 
 // => PLACEHOLDER!!!!!!!!!!!!!!!!!!!!!!!!
