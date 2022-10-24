@@ -1,7 +1,17 @@
 "use strict";
 // global variable who need in the project for all and rendering!
 let currentPokemon = 1;
-let maxPokemons = 20;
+let intermediateValue = 181;
+let maxPokemons = 200;
+let generation1 = {};
+let generation2 = {};
+let generation3 = {};
+let generation4 = {};
+let generation5 = {};
+let generation6 = {};
+let generation7 = {};
+let generation8 = {};
+let generation9 = {};
 //ulr´s api
 let url1 = "https://pokeapi.co/api/v2/pokemon/"; //poke api v2 url for stats
 let url2 = "https://pokeapi.co/api/v2/pokemon-species/"; //poke api v2 url for generation and color
@@ -57,5 +67,20 @@ class PokemonCard {
         this.pokemonSpd = pokemonSpd;
         this.pokemonType2 = pokemonType2;
         this.pokemonAbilitie2 = pokemonAbilitie2;
+    }
+}
+// pokemon base class
+class PokemonCardBaseData {
+    pokemonId;
+    pokemonName;
+    pokemonImage;
+    color;
+    pokemonGeneration;
+    constructor(pokemonId, pokemonName, pokemonImage, color, pokemonGeneration) {
+        this.pokemonId = pokemonId;
+        this.pokemonName = pokemonName;
+        this.pokemonImage = pokemonImage;
+        this.color = color;
+        this.pokemonGeneration = pokemonGeneration;
     }
 }

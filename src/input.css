@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-html {
+@layer components {
+   html {
       font-size: clamp(1rem, 0.9711rem + 0.1283vw, 1.125rem);
       font-family: 'Open Sans';
    }
@@ -363,7 +363,6 @@ html {
    .text-color-type-background {
       color: #F7F7F7;
    }
-
 
 
 }

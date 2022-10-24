@@ -5,6 +5,35 @@ function clearContainerWithSmallPokemonCards() {
    }
 }
 
+// update the absolte base data of the pokemon
+async function updateBaseDataJson() {
+   for (let i = 1; i <= 10; i++) {
+      await getPokemonValueByApi(i, url1);
+      await getPokemonValueByApi(i, url2);
+
+      let type1ValueForColor = setColorCodeCurrentPokemon(
+         url1responseCurrentPokemonAsJson
+      );
+      localPokemonsData[i] = new PokemonCardBaseData(
+         url1responseCurrentPokemonAsJson["id"],
+         url1responseCurrentPokemonAsJson["name"],
+         url1responseCurrentPokemonAsJson["sprites"]["other"][
+            "official-artwork"
+         ]["front_default"],
+         type1ValueForColor,
+
+         url2responseCurrentPokemonAsJson["generation"]["name"]
+      );
+      console.log("Pokemon created wit ID: ", i);
+   }
+}
+
+//load pokemon base data from JSON
+async function loadPokemonBaseJSON() {
+   let response = await fetch("pokemonBaseData.json");
+   localPokemonsData = await response.json();
+}
+
 //to fetch poke api values
 async function getPokemonValueByApi(currentPokemon: number, urlApi: string) {
    try {
@@ -68,7 +97,7 @@ function createPokemonLocal(
    let type1ValueForColor = setColorCodeCurrentPokemon(
       url1responseCurrentPokemonAsJson
    );
-   return (localPokemonsData[i] = new PokemonCard(
+   localPokemonsData[i] = new PokemonCard(
       url1responseCurrentPokemonAsJson["id"],
       url1responseCurrentPokemonAsJson["name"],
       url1responseCurrentPokemonAsJson["sprites"]["other"]["official-artwork"][
@@ -89,7 +118,7 @@ function createPokemonLocal(
       url1responseCurrentPokemonAsJson["stats"][5]["base_stat"],
       type2Value,
       abilitie2Value
-   ));
+   );
 }
 
 function checkType2Exists(url1responseCurrentPokemonAsJson: any) {
@@ -172,11 +201,104 @@ function setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson: any) {
    }
    return type1ValueForColor;
 }
+//sort all pokemons to the generation
+async function sortPokemonToGeneration() {
+   for (
+      let k = currentPokemon;
+      k <= Object.keys(localPokemonsData).length;
+      k++
+   ) {
+      const generation = localPokemonsData[k]["pokemonGeneration"];
+      switch (generation) {
+         case "generation-i":
+            generation1[k] = localPokemonsData[k];
+            break;
+         case "generation-ii":
+            generation2[k] = localPokemonsData[k];
+            break;
+         case "generation-iii":
+            generation3[k] = localPokemonsData[k];
+            break;
+         case "generation-iv":
+            generation4[k] = localPokemonsData[k];
+            break;
+         case "generation-v":
+            generation5[k] = localPokemonsData[k];
+            break;
+         case "generation-vi":
+            generation6[k] = localPokemonsData[k];
+            break;
+         case "generation-vii":
+            generation7[k] = localPokemonsData[k];
+            break;
+         case "generation-viii":
+            generation8[k] = localPokemonsData[k];
+            break;
+         case "generation-ix":
+            generation9[k] = localPokemonsData[k];
+            break;
+         default:
+            break;
+      }
+   }
+}
 
 // redner small pokemon cards
 function renderSmallPokemonCard(i: number) {
+   let generationSelected;
+   switch (i) {
+      case 1:
+         generationSelected = generation1;
+         break;
+      case 2:
+         generationSelected = generation2;
+         break;
+      case 3:
+         generationSelected = generation3;
+         break;
+      case 4:
+         generationSelected = generation4;
+         break;
+      case 5:
+         generationSelected = generation5;
+         break;
+      case 6:
+         generationSelected = generation6;
+         break;
+      case 7:
+         generationSelected = generation7;
+         break;
+      case 8:
+         generationSelected = generation8;
+         break;
+      case 9:
+         generationSelected = generation9;
+         break;
+      default:
+         break;
+   }
+   console.log(generationSelected);
    if (containerRenderAllPokemonSmall != null) {
-      containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(i);
+      for (let j = 1; j <= Object.keys(generationSelected).length; j++) {
+         let generationKeyPosition: number = parseInt(
+            Object.keys(generationSelected)[j]
+         );
+         let renderId = generationSelected[generationKeyPosition]["pokemonId"];
+         let renderName =
+            generationSelected[generationKeyPosition]["pokemonName"];
+         let renderImage =
+            generationSelected[generationKeyPosition]["pokemonImage"];
+         let renderColor = generationSelected[generationKeyPosition]["color"];
+         let renderGeneration =
+            generationSelected[generationKeyPosition]["pokemonGeneration"];
+         containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
+            renderId,
+            renderName,
+            renderImage,
+            renderColor,
+            renderGeneration
+         );
+      }
    }
 }
 
@@ -198,4 +320,11 @@ function sortPokemonAZ() {
       renderSmallPokemonCard(element[1]);
    }
    sortArray = [];
+}
+
+//render next when coming to the bottom at the side
+function renderMorePokemonCardsSmall() {
+   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      alert("Unten angekommen!"); // you're at the bottom of the page
+   }
 }
