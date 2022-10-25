@@ -65,7 +65,7 @@
       "yaml": "^1.10.2"
    },
    "scripts": {
-      "dev": "npx tailwindcss-cli@latest build -i ./src/input.css -o ./public/style.css"
+      "dev": "npx tailwindcss-cli@latest build -i ./src/input.css -o ./public/css/style.css"
    },
    "keywords": [],
    "author": "",

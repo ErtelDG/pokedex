@@ -89,10 +89,11 @@
                         onclick="renderSmallPokemonCard(9)">IX</div>
                   </div>
                </div>
+              
                <!-- pokemon search bar -->
                <div name="pokemon-search-bar"
-                  class="flex py-1 px-2 gap-4 w-82 md:w-2/5 h-8 justify-center bg-white border border-solid border-gray-100 border-r-05rem  shadow-sm">
-                  <div class="w-full h-full gap-2 flex items-center justify-center">
+                  class="flex  gap-4 w-82 md:w-2/5 h-8 justify-center bg-white border border-solid border-gray-100 border-r-05rem  shadow-sm">
+                  <div class="w-full h-full gap-2 flex items-center justify-center ml-2">
                      <div class="w-4 h-4 flex justify-center items-center">
                         <svg width="0.75rem" height="0.75rem" viewBox="0 0 8 8" fill="none"
                            xmlns="http://www.w3.org/2000/svg">
@@ -101,19 +102,18 @@
                               fill="#666666" />
                         </svg>
                      </div>
-                     <form action="#" class="w-max">
-                        <label>
-                           <input class="w-max" placeholder="Search Pokemon" id="inputSearchPokemon" type="search"
-                              list="pokemonsSearchId" class="w-32 text-sm border-white focus:outline-none relative">
-                           <div>
-                              <datalist id="pokemonsSearchId">
-                              </datalist>
-                           </div>
-                        </label>
-                        <div id="resultPokemon"></div></input>
-                     </form>
+                <!-- pokemon search -->
+                  <form autocomplete="off" action="/action_page.php" class="flex w-full h-full">
+                     <div class="autocomplete w-full">
+                        <input class="w-full h-full px-2 text-center" id="myInput" type="text" name="myCountry" placeholder="Search in all Pokemons.">
+                     </div>
+                     <input class="rounded-r px-2 my-0 cursor-pointer border-l-2 bg-white hover:bg-gray-200" type="submit">
+                  </form>
                   </div>
                </div>
+
+
+
                <div class="w-full h-2 md:h-3 border-b-2"></div>
             </div>
             <!-- HERE GO RENDER SMALL CARDS!! -->
@@ -130,7 +130,8 @@
          <script src="js/templates.js"></script>
          <script src="js/globalVariable.js"></script>
          <script src="js/script.js"></script>
-         <script src="main.js"></script>
+         <script src="js/searchBar.js"></script>
+         <script src="js/main.js"></script>
 
 </body>
 

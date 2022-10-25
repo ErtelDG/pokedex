@@ -328,7 +328,9 @@ async function renderSmallPokemonCard(i: number) {
          }
       }
    }
-   renderSearchList(generationSelected);
+
+   // Prüfen Erstellung Data Liste!
+   //renderSearchList(generationSelected);
 
    let sortBtn = document.getElementById("sortBtnAZ");
    if (sortBtn != null) {
@@ -338,6 +340,7 @@ async function renderSmallPokemonCard(i: number) {
    pokemonsSearchId?.innerHTML;
 }
 
+//function sort the current generation
 async function sortPokemonAZ(generation: any) {
    let sortArray: any[] = [];
 
@@ -384,6 +387,9 @@ async function renderSortPokemonCard(generation: any, indexPokemon: any) {
       );
    }
 }
+
+//render all pokemons in array
+async function loadPokemonNamesInArray() {}
 
 //render next when coming to the bottom at the side
 function renderMorePokemonCardsSmall() {

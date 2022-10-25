@@ -12,6 +12,7 @@ let generation6 = {};
 let generation7 = {};
 let generation8 = {};
 let generation9 = {};
+let searchAllPokemonsArray = [];
 //ulr´s api
 let url1 = "https://pokeapi.co/api/v2/pokemon/"; //poke api v2 url for stats
 let url2 = "https://pokeapi.co/api/v2/pokemon-species/"; //poke api v2 url for generation and color
