@@ -11,7 +11,8 @@ let generation6: any = {};
 let generation7: any = {};
 let generation8: any = {};
 let generation9: any = {};
-let searchAllPokemonsArray = [];
+let searchAllPokemonsArray: string[] = [];
+
 
 //ulr´s api
 let url1: string = "https://pokeapi.co/api/v2/pokemon/"; //poke api v2 url for stats

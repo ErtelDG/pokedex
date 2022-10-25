@@ -389,7 +389,15 @@ async function renderSortPokemonCard(generation: any, indexPokemon: any) {
 }
 
 //render all pokemons in array
-async function loadPokemonNamesInArray() {}
+function loadPokemonNamesInArray() {
+   for (let i = 1; i <= Object.keys(localPokemonsData).length; i++) {
+      const element =
+         localPokemonsData[i]["pokemonName"][0].toUpperCase() +
+         localPokemonsData[i]["pokemonName"].slice(1);
+      searchAllPokemonsArray.push(element);
+   }
+   searchAllPokemonsArray.sort();
+}
 
 //render next when coming to the bottom at the side
 function renderMorePokemonCardsSmall() {

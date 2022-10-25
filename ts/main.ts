@@ -12,8 +12,45 @@ async function greatCurrentPokemonValuesFromApi() {
 }
 
 //Hier weiter machen!!!!
-function showBigPokemonCard(i: number) {
-   alert(i);
+async function showBigPokemonCard(idPokemon: number) {
+   await getPokemonValueByApi(idPokemon, url1);
+   await getPokemonValueByApi(idPokemon, url2);
+
+   let type2 = "undefined";
+   let abilities2 = "undefined";
+
+   if (url1responseCurrentPokemonAsJson["types"].length > 1) {
+      type2 = url1responseCurrentPokemonAsJson["types"][1]["type"]["name"];
+   }
+   if (url1responseCurrentPokemonAsJson["abilities"].length > 1) {
+      abilities2 =
+         url1responseCurrentPokemonAsJson["abilities"][1]["ability"]["name"];
+   }
+   let renderBigPokemonCard = new PokemonCard(
+      url2responseCurrentPokemonAsJson["id"],
+      url2responseCurrentPokemonAsJson["name"],
+      url1responseCurrentPokemonAsJson["sprites"]["other"]["official-artwork"][
+         "front_default"
+      ],
+      url1responseCurrentPokemonAsJson["types"][0]["type"]["name"],
+      url2responseCurrentPokemonAsJson["color"]["name"],
+      url2responseCurrentPokemonAsJson["generation"]["name"],
+      url1responseCurrentPokemonAsJson["weight"] / 10,
+      url1responseCurrentPokemonAsJson["height"] / 10,
+      url1responseCurrentPokemonAsJson["abilities"][0]["ability"]["name"],
+      url2responseCurrentPokemonAsJson["flavor_text_entries"][0]["flavor_text"],
+      url1responseCurrentPokemonAsJson["stats"][0]["base_stat"],
+      url1responseCurrentPokemonAsJson["stats"][1]["base_stat"],
+      url1responseCurrentPokemonAsJson["stats"][2]["base_stat"],
+      url1responseCurrentPokemonAsJson["stats"][3]["base_stat"],
+      url1responseCurrentPokemonAsJson["stats"][4]["base_stat"],
+      url1responseCurrentPokemonAsJson["stats"][5]["base_stat"],
+      type2,
+      abilities2
+   );
+
+   console.log(renderBigPokemonCard.pokemonType2);
+   console.log(renderBigPokemonCard.pokemonAbilitie2);
 }
 
 //go start rendering
@@ -22,7 +59,7 @@ async function init() {
    await loadPokemonBaseJSON();
    await sortPokemonToGeneration();
    renderSmallPokemonCard(1);
-   loadPokemonNamesInArray()
+   loadPokemonNamesInArray();
 }
 
 //Liste für Data List! Notwendig noch?
