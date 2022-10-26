@@ -200,7 +200,7 @@ async function showBigPokemonCard(idPokemon) {
                            <style type="text/css">
                               .loading_ATK {
                                  position: absolute;
-                                 width: ${renderBigPokemonCard.pokemonAtk}%;
+                                 width: calc(100/150*${renderBigPokemonCard.pokemonAtk}%);
                                  top: 0px;
                                  animation: bounceATK 2s linear;
                               }
@@ -211,7 +211,7 @@ async function showBigPokemonCard(idPokemon) {
                                  }
 
                                  100% {
-                                    width: ${renderBigPokemonCard.pokemonAtk}%;
+                                    width: calc(100/150*${renderBigPokemonCard.pokemonAtk}%);
                                  }
                               }
                            </style>
@@ -223,7 +223,7 @@ async function showBigPokemonCard(idPokemon) {
                            <style type="text/css">
                               .loading_DEF {
                                  position: absolute;
-                                 width: ${renderBigPokemonCard.pokemonDef}%;
+                                 width: calc(100/150*${renderBigPokemonCard.pokemonDef}%);
                                  top: 0px;
                                  animation: bounceDEF 2s linear;
                               }
@@ -234,7 +234,7 @@ async function showBigPokemonCard(idPokemon) {
                                  }
 
                                  100% {
-                                    width: ${renderBigPokemonCard.pokemonDef}%;
+                                    width: calc(100/150*${renderBigPokemonCard.pokemonDef}%);
                                  }
                               }
                            </style>
@@ -246,8 +246,8 @@ async function showBigPokemonCard(idPokemon) {
                            <style type="text/css">
                               .loading_SATK {
                                  position: absolute;
-                                 width: ${renderBigPokemonCard.pokemonSatk}%;
-                                 top: 0px;
+                                 width: calc(100/150*${renderBigPokemonCard.pokemonSatk}%);
+                                 top: 0px; 
                                  animation: bounceSATK 2s linear;
                               }
 
@@ -257,7 +257,7 @@ async function showBigPokemonCard(idPokemon) {
                                  }
 
                                  100% {
-                                    width: ${renderBigPokemonCard.pokemonSatk}%;
+                                    width: calc(100/150*${renderBigPokemonCard.pokemonSatk}%);
                                  }
                               }
                            </style>
@@ -269,7 +269,7 @@ async function showBigPokemonCard(idPokemon) {
                            <style type="text/css">
                               .loading_SDEF {
                                  position: absolute;
-                                 width: ${renderBigPokemonCard.pokemonSdef}%;
+                                 width: calc(100/150*${renderBigPokemonCard.pokemonSdef}%);
                                  top: 0px;
                                  animation: bounceSDEF 2s linear;
                               }
@@ -280,7 +280,7 @@ async function showBigPokemonCard(idPokemon) {
                                  }
 
                                  100% {
-                                    width: ${renderBigPokemonCard.pokemonSdef}%;
+                                    width: calc(100/150*${renderBigPokemonCard.pokemonSdef}%);
                                  }
                               }
                            </style>
@@ -292,7 +292,7 @@ async function showBigPokemonCard(idPokemon) {
                            <style type="text/css">
                               .loading_SPD {
                                  position: absolute;
-                                 width: ${renderBigPokemonCard.pokemonSpd}%;
+                                 width: calc(100/150*${renderBigPokemonCard.pokemonSpd}%);
                                  top: 0px;
                                  animation: bounceSPD 2s linear;
                               }
@@ -303,7 +303,7 @@ async function showBigPokemonCard(idPokemon) {
                                  }
 
                                  100% {
-                                    width: ${renderBigPokemonCard.pokemonSpd}%;
+                                    width: calc(100/150*${renderBigPokemonCard.pokemonSpd}%);
                                  }
                               }
                            </style>
