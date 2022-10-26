@@ -51,7 +51,8 @@ class PokemonCard {
     pokemonSpd;
     pokemonType2;
     pokemonAbilitie2;
-    constructor(pokemonId, pokemonName, pokemonImage, pokemonType1, color, pokemonGeneration, pokemonWeight, pokemonHeight, pokemonAbilitie1, flavorPokemon, pokemonHP, pokemonAtk, pokemonDef, pokemonSatk, pokemonSdef, pokemonSpd, pokemonType2, pokemonAbilitie2) {
+    pokemonColor2;
+    constructor(pokemonId, pokemonName, pokemonImage, pokemonType1, color, pokemonGeneration, pokemonWeight, pokemonHeight, pokemonAbilitie1, flavorPokemon, pokemonHP, pokemonAtk, pokemonDef, pokemonSatk, pokemonSdef, pokemonSpd, pokemonType2, pokemonAbilitie2, pokemonColor2) {
         this.pokemonId = pokemonId;
         this.pokemonName = pokemonName;
         this.pokemonImage = pokemonImage;
@@ -70,6 +71,7 @@ class PokemonCard {
         this.pokemonSpd = pokemonSpd;
         this.pokemonType2 = pokemonType2;
         this.pokemonAbilitie2 = pokemonAbilitie2;
+        this.pokemonColor2 = pokemonColor2;
     }
 }
 // pokemon base class

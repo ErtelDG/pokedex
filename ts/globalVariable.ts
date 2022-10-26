@@ -60,6 +60,7 @@ class PokemonCard {
    pokemonSpd!: number;
    pokemonType2?: string;
    pokemonAbilitie2?: string;
+   pokemonColor2?: string;
 
    constructor(
       pokemonId: number,
@@ -79,7 +80,8 @@ class PokemonCard {
       pokemonSdef: number,
       pokemonSpd: number,
       pokemonType2?: string,
-      pokemonAbilitie2?: string
+      pokemonAbilitie2?: string,
+      pokemonColor2?: string
    ) {
       this.pokemonId = pokemonId;
       this.pokemonName = pokemonName;
@@ -99,6 +101,7 @@ class PokemonCard {
       this.pokemonSpd = pokemonSpd;
       this.pokemonType2 = pokemonType2;
       this.pokemonAbilitie2 = pokemonAbilitie2;
+      this.pokemonColor2 = pokemonColor2
    }
 }
 

@@ -10,7 +10,7 @@ async function updateBaseDataJson() {
     for (let i = 1; i <= 10; i++) {
         await getPokemonValueByApi(i, url1);
         await getPokemonValueByApi(i, url2);
-        let type1ValueForColor = setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson);
+        let type1ValueForColor = setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson, 0);
         localPokemonsData[i] = new PokemonCardBaseData(url1responseCurrentPokemonAsJson["id"], url1responseCurrentPokemonAsJson["name"], url1responseCurrentPokemonAsJson["sprites"]["other"]["official-artwork"]["front_default"], type1ValueForColor, url2responseCurrentPokemonAsJson["generation"]["name"]);
         console.log("Pokemon created wit ID: ", i);
     }
@@ -66,7 +66,7 @@ function savePokemonLocal(i) {
 function createPokemonLocal(i, url1responseCurrentPokemonAsJson, url2responseCurrentPokemonAsJson) {
     let type2Value = checkType2Exists(url1responseCurrentPokemonAsJson);
     let abilitie2Value = checkAbilitie2Exists(url1responseCurrentPokemonAsJson);
-    let type1ValueForColor = setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson);
+    let type1ValueForColor = setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson, 0);
     localPokemonsData[i] = new PokemonCard(url1responseCurrentPokemonAsJson["id"], url1responseCurrentPokemonAsJson["name"], url1responseCurrentPokemonAsJson["sprites"]["other"]["official-artwork"]["front_default"], url1responseCurrentPokemonAsJson["types"][0]["type"]["name"], type1ValueForColor, url2responseCurrentPokemonAsJson["generation"]["name"], parseInt(url1responseCurrentPokemonAsJson["weight"]) / 10, parseInt(url1responseCurrentPokemonAsJson["height"]) / 10, url1responseCurrentPokemonAsJson["abilities"][0]["ability"]["name"], url2responseCurrentPokemonAsJson["flavor_text_entries"][0]["flavor_text"], url1responseCurrentPokemonAsJson["stats"][0]["base_stat"], url1responseCurrentPokemonAsJson["stats"][1]["base_stat"], url1responseCurrentPokemonAsJson["stats"][2]["base_stat"], url1responseCurrentPokemonAsJson["stats"][3]["base_stat"], url1responseCurrentPokemonAsJson["stats"][4]["base_stat"], url1responseCurrentPokemonAsJson["stats"][5]["base_stat"], type2Value, abilitie2Value);
 }
 function checkType2Exists(url1responseCurrentPokemonAsJson) {
@@ -84,9 +84,9 @@ function checkAbilitie2Exists(url1responseCurrentPokemonAsJson) {
     }
     return abilitie2Value;
 }
-function setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson) {
+function setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson, typePosition) {
     let type1ValueForColor = "undefined";
-    switch (url1responseCurrentPokemonAsJson["types"][0]["type"]["name"]) {
+    switch (url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]) {
         case "rock":
             type1ValueForColor = "#B69E31";
             break;

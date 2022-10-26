@@ -18,30 +18,56 @@ async function showBigPokemonCard(idPokemon: number) {
 
    let type2 = "undefined";
    let abilities2 = "undefined";
+   let color2 = "undefined";
 
    if (url1responseCurrentPokemonAsJson["types"].length > 1) {
-      type2 = url1responseCurrentPokemonAsJson["types"][1]["type"]["name"];
+      type2 =
+         url1responseCurrentPokemonAsJson["types"][1]["type"][
+            "name"
+         ][0].toUpperCase(0) +
+         url1responseCurrentPokemonAsJson["types"][1]["type"]["name"].slice(1);
    }
    if (url1responseCurrentPokemonAsJson["abilities"].length > 1) {
       abilities2 =
          url1responseCurrentPokemonAsJson["abilities"][1]["ability"]["name"];
    }
+   if (type2 != "undefined") {
+      let farbcode = setColorCodeCurrentPokemon(
+         url1responseCurrentPokemonAsJson,
+         1
+      );
+      color2 = farbcode;
+   }
 
-   let color = setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson);
+   //fix format bug:
+   let flavorOld =
+      url2responseCurrentPokemonAsJson["flavor_text_entries"][0]["flavor_text"];
+   let flavorNewFixed = flavorOld.replace("\f", " ");
+
+   let color = setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson, 0);
 
    let renderBigPokemonCard = new PokemonCard(
       url2responseCurrentPokemonAsJson["id"],
-      url2responseCurrentPokemonAsJson["name"],
+      url2responseCurrentPokemonAsJson["name"][0].toUpperCase() +
+         url2responseCurrentPokemonAsJson["name"].slice(),
       url1responseCurrentPokemonAsJson["sprites"]["other"]["official-artwork"][
          "front_default"
       ],
-      url1responseCurrentPokemonAsJson["types"][0]["type"]["name"],
+      url1responseCurrentPokemonAsJson["types"][0]["type"][
+         "name"
+      ][0].toUpperCase() +
+         url1responseCurrentPokemonAsJson["types"][0]["type"]["name"].slice(1),
       color,
       url2responseCurrentPokemonAsJson["generation"]["name"],
       url1responseCurrentPokemonAsJson["weight"] / 10,
       url1responseCurrentPokemonAsJson["height"] / 10,
-      url1responseCurrentPokemonAsJson["abilities"][0]["ability"]["name"],
-      url2responseCurrentPokemonAsJson["flavor_text_entries"][0]["flavor_text"],
+      url1responseCurrentPokemonAsJson["abilities"][0]["ability"][
+         "name"
+      ][0].toUpperCase() +
+         url1responseCurrentPokemonAsJson["abilities"][0]["ability"][
+            "name"
+         ].slice(1),
+      flavorNewFixed,
       url1responseCurrentPokemonAsJson["stats"][0]["base_stat"],
       url1responseCurrentPokemonAsJson["stats"][1]["base_stat"],
       url1responseCurrentPokemonAsJson["stats"][2]["base_stat"],
@@ -49,7 +75,8 @@ async function showBigPokemonCard(idPokemon: number) {
       url1responseCurrentPokemonAsJson["stats"][4]["base_stat"],
       url1responseCurrentPokemonAsJson["stats"][5]["base_stat"],
       type2,
-      abilities2
+      abilities2,
+      color2
    );
 
    let renderContainBigCard = document.getElementById("renderBigPokemon");
@@ -62,12 +89,8 @@ async function showBigPokemonCard(idPokemon: number) {
 
       <!-- pokemon card -->
       <!-- backgroung-color depending on current pokemon -->
-      <div name="background-current-pokemon-by-mobile" class="bg-current-pokemon-full  md:rounded-lg md:pl-3 md:pr-3 md:pb-1" style="background-color:${
-         renderBigPokemonCard.color
-      }">
-         <div id="pokecard" name="card-pokemon" class="w-90 h-640 relative border-r-075rem" style="background-color:${
-            renderBigPokemonCard.color
-         }">
+      <div name="background-current-pokemon-by-mobile" class="bg-current-pokemon-full  md:rounded-lg md:pl-3 md:pr-3 md:pb-1" style="background-color:${renderBigPokemonCard.color}">
+         <div id="pokecard" name="card-pokemon" class="w-90 h-640 relative border-r-075rem" style="background-color:${renderBigPokemonCard.color}">
 
             <!-- pokemon card name header -->
             <div name="pokemon-card-name-header"
@@ -76,13 +99,8 @@ async function showBigPokemonCard(idPokemon: number) {
                   <!-- pokemon-card-name-header -->
                   <img src="img/arrowLeft.png">
                </div>
-               <div name="pokemon-name" class="w-56 h-8 font-bold text-2xl flex items-center justify-center text-white">${
-                  renderBigPokemonCard.pokemonName[0].toUpperCase() +
-                  renderBigPokemonCard.pokemonName.slice(1)
-               }</div>
-               <div name="pokemon-number" class="w-8 h-8 font-bold text-xs flex items-center text-white">#${
-                  renderBigPokemonCard.pokemonId
-               }</div>
+               <div name="pokemon-name" class="w-56 h-8 font-bold text-2xl flex items-center justify-center text-white">${renderBigPokemonCard.pokemonName}</div>
+               <div name="pokemon-number" class="w-8 h-8 font-bold text-xs flex items-center text-white"># ${renderBigPokemonCard.pokemonId}</div>
             </div>
 
             <!-- current pokemon stats card -->
@@ -90,17 +108,18 @@ async function showBigPokemonCard(idPokemon: number) {
                class="w-88 h-103 gap-y-3.5 absolute left-position-50-from-22rem bottom-4 md:bottom-2 bg-white rounded-lg flex flex-col items-center pt-14 px-5">
                <!-- pokemon types -->
                <div name="pokemon-type" class="flex justify-center p-0 gap-4 w-78 h-5">
-                  <div name="type" class="w-14 h-5 py-05 px-2 flex flex-col bg-color-type-psychic rounded-lg">
-                     <div class="w-10 h-4 text-xs text-white flex items-center justify-center">Psychic</div>
+                  <div name="type1" id="pokemonType1" class="w-14 h-5 py-05 px-2 flex flex-col bg-color-type-psychic rounded-lg" style="background-color:${renderBigPokemonCard.color}">
+                     <div class="w-10 h-4 text-xs text-white flex items-center justify-center">${renderBigPokemonCard.pokemonType1}</div>
                   </div>
-                  <div name="physic" class="w-14 h-5 py-05 px-2 flex flex-col bg-color-type-medium-gray rounded-lg">
-                     <div class=" w-10 h-4 text-xs text-white flex items-center justify-center">Type</div>
+                  <div name="type2" id="pokemonType2" class="w-14 h-5 py-05 px-2 flex flex-col bg-color-type-medium-gray rounded-lg" style="background-color:${renderBigPokemonCard.pokemonColor2}">
+                     <div class=" w-10 h-4 text-xs text-white flex items-center justify-center">${renderBigPokemonCard.pokemonType2}
+                     </div>
                   </div>
                </div>
                <!--title about pokemon -->
                <div name="title-about" class="flex justify-center p-0 w-78 h-4">
                   <div name="title-about-text"
-                     class="text-sm font-bold flex items-center justify-center text-center w-78 h-4 text-color-type-psychic">
+                     class="text-sm font-bold flex items-center justify-center text-center w-78 h-4 text-color-type-psychic" style="color:${renderBigPokemonCard.color}">
                      About</div>
                </div>
                <!-- about current pokemon stats -->
@@ -114,7 +133,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  fill="#212121" />
                            </svg>
                         </div>
-                        <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray">9,9 kg</div>
+                        <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray">${renderBigPokemonCard.pokemonWeight}kg</div>
                      </div>
                      <div class="flex justify-center">
                         <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray text-center">Weight</div>
@@ -131,7 +150,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  fill="#212121" />
                            </svg>
                         </div>
-                        <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray">0,4 m</div>
+                        <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray">${renderBigPokemonCard.pokemonHeight} m</div>
                      </div>
                      <div class="flex justify-center">
                         <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray text-center">Height</div>
@@ -139,41 +158,38 @@ async function showBigPokemonCard(idPokemon: number) {
                   </div>
                   <div class="bg-color-type-light-gray w-0-25 h-12"></div>
                   <div name="abilities" class="flex flex-col p-0 w-13 h-12">
-                     <div name="value-abilities" class="flex py-2 gap-2 w-13 h-9">
-                        <div class="text-xxs font-normal text-color-type-dark-gray">Synchronize</div>
+                     <div name="value-abilities" class="flex py-2 gap-2 w-13 h-9 justify-center">
+                        <div class="text-xxs font-normal text-color-type-dark-gray text-center">Ability</div>
                      </div>
                      <div class="flex justify-center">
-                        <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray text-center">Abilities</div>
+                        <div class="text-xxs font-normal w-8 h-4 text-color-type-dark-gray text-center">${renderBigPokemonCard.pokemonAbilitie1}</div>
                      </div>
                   </div>
                </div>
                <!-- text over pokemon -->
                <div name="text-over-pokemon"
-                  class="flex items-center w-78 h-8 text-center font-normal text-xxs text-color-type-dark-gray">When
-                  viewed
-                  through a microscope, this Pokémon’s short, fine,
-                  delicate hair can be seen.</div>
+                  class="flex items-center w-78 h-8 text-center font-normal text-xxs text-color-type-dark-gray">${renderBigPokemonCard.flavorPokemon}</div>
                <div name="title-stats"
-                  class="font-bold text-sm w-78 h-4 flex items-center justify-center text-color-type-psychic">Base Stats
+                  class="font-bold text-sm w-78 h-4 flex items-center justify-center text-color-type-psychic" style="color:${renderBigPokemonCard.color}">Base Stats
                </div>
                <!-- base stats -->
                <div name="base-stats-current-pokemon" class="flex p-0 gap-2 w-78 h-25">
                   <div name="base-stats-name" class="flex flex-col p-0 w-7 h-25">
-                     <div name="HP" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">HP
+                     <div name="HP" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic" style="color:${renderBigPokemonCard.color}">HP
                      </div>
-                     <div name="ATK" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">
+                     <div name="ATK" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic" style="color:${renderBigPokemonCard.color}">
                         ATK
                      </div>
-                     <div name="DEF" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">
+                     <div name="DEF" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic" style="color:${renderBigPokemonCard.color}">
                         DEF
                      </div>
-                     <div name="SATK" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">
+                     <div name="SATK" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic" style="color:${renderBigPokemonCard.color}">
                         SATK
                      </div>
-                     <div name="SDEF" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">
+                     <div name="SDEF" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic" style="color:${renderBigPokemonCard.color}">
                         SDEF
                      </div>
-                     <div name="SPD" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic">
+                     <div name="SPD" class="font-bold text-xxs flex items-center justify-end text-color-type-psychic" style="color:${renderBigPokemonCard.color}">
                         SPD
                      </div>
                   </div>
@@ -182,26 +198,26 @@ async function showBigPokemonCard(idPokemon: number) {
                   </div>
                   <div name="base-stats-level" class="flex flex-col w-5 h-25">
                      <div name="base-stats-level"
-                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">${renderBigPokemonCard.pokemonHP}</div>
                      <div name="base-stats-level"
-                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">${renderBigPokemonCard.pokemonAtk}</div>
                      <div name="base-stats-level"
-                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">${renderBigPokemonCard.pokemonDef}</div>
                      <div name="base-stats-level"
-                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">${renderBigPokemonCard.pokemonSatk}</div>
                      <div name="base-stats-level"
-                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">${renderBigPokemonCard.pokemonSdef}</div>
                      <div name="base-stats-level"
-                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">100</div>
+                        class="w-5 h-4 font-normal text-xxs flex items-center text-color-type-dark-gray">${renderBigPokemonCard.pokemonSpd}</div>
                   </div>
                   <div class="w-full h-25 flex flex-col">
                      <div name="loader" class="loader relative h-2 w-full m-1">
                         <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
-                        <div name="loading_2" class="loading_HP absolute h-full bg-color-type-psychic top-0">
+                        <div name="loading_2" class="loading_HP absolute h-full bg-color-type-psychic top-0" style="background-color: ${renderBigPokemonCard.color}">
                            <style type="text/css">
                               .loading_HP {
                                  position: absolute;
-                                 width: 50%;
+                                 width: ${renderBigPokemonCard.pokemonHP}%;
                                  top: 0px;
                                  animation: bounceHP 2s linear;
                               }
@@ -212,7 +228,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  }
 
                                  100% {
-                                    width: 50%;
+                                    width: ${renderBigPokemonCard.pokemonHP}%;
                                  }
                               }
                            </style>
@@ -220,11 +236,11 @@ async function showBigPokemonCard(idPokemon: number) {
                      </div>
                      <div name="loader" class="loader relative h-2 w-full m-1">
                         <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
-                        <div name="loading_2" class="loading_ATK absolute h-full bg-color-type-psychic top-0">
+                        <div name="loading_2" class="loading_ATK absolute h-full bg-color-type-psychic top-0" style="background-color: ${renderBigPokemonCard.color}">
                            <style type="text/css">
                               .loading_ATK {
                                  position: absolute;
-                                 width: 40%;
+                                 width: ${renderBigPokemonCard.pokemonAtk}%;
                                  top: 0px;
                                  animation: bounceATK 2s linear;
                               }
@@ -235,7 +251,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  }
 
                                  100% {
-                                    width: 40%;
+                                    width: ${renderBigPokemonCard.pokemonAtk}%;
                                  }
                               }
                            </style>
@@ -243,11 +259,11 @@ async function showBigPokemonCard(idPokemon: number) {
                      </div>
                      <div name="loader" class="loader relative h-2 w-full m-1">
                         <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
-                        <div name="loading_2" class="loading_DEF absolute h-full bg-color-type-psychic top-0">
+                        <div name="loading_2" class="loading_DEF absolute h-full bg-color-type-psychic top-0" style="background-color: ${renderBigPokemonCard.color}">
                            <style type="text/css">
                               .loading_DEF {
                                  position: absolute;
-                                 width: 60%;
+                                 width: ${renderBigPokemonCard.pokemonDef}%;
                                  top: 0px;
                                  animation: bounceDEF 2s linear;
                               }
@@ -258,7 +274,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  }
 
                                  100% {
-                                    width: 60%;
+                                    width: ${renderBigPokemonCard.pokemonDef}%;
                                  }
                               }
                            </style>
@@ -266,11 +282,11 @@ async function showBigPokemonCard(idPokemon: number) {
                      </div>
                      <div name="loader" class="loader relative h-2 w-full m-1">
                         <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
-                        <div name="loading_2" class="loading_SATK absolute h-full bg-color-type-psychic top-0">
+                        <div name="loading_2" class="loading_SATK absolute h-full bg-color-type-psychic top-0" style="background-color: ${renderBigPokemonCard.color}">
                            <style type="text/css">
                               .loading_SATK {
                                  position: absolute;
-                                 width: 90%;
+                                 width: ${renderBigPokemonCard.pokemonSatk}%;
                                  top: 0px;
                                  animation: bounceSATK 2s linear;
                               }
@@ -281,7 +297,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  }
 
                                  100% {
-                                    width: 90%;
+                                    width: ${renderBigPokemonCard.pokemonSatk}%;
                                  }
                               }
                            </style>
@@ -289,11 +305,11 @@ async function showBigPokemonCard(idPokemon: number) {
                      </div>
                      <div name="loader" class="loader relative h-2 w-full m-1">
                         <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
-                        <div name="loading_2" class="loading_SDEF absolute h-full bg-color-type-psychic top-0">
+                        <div name="loading_2" class="loading_SDEF absolute h-full bg-color-type-psychic top-0" style="background-color: ${renderBigPokemonCard.color}">
                            <style type="text/css">
                               .loading_SDEF {
                                  position: absolute;
-                                 width: 72%;
+                                 width: ${renderBigPokemonCard.pokemonSdef}%;
                                  top: 0px;
                                  animation: bounceSDEF 2s linear;
                               }
@@ -304,7 +320,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  }
 
                                  100% {
-                                    width: 72%;
+                                    width: ${renderBigPokemonCard.pokemonSdef}%;
                                  }
                               }
                            </style>
@@ -312,11 +328,11 @@ async function showBigPokemonCard(idPokemon: number) {
                      </div>
                      <div name="loader" class="loader relative h-2 w-full m-1">
                         <div name="loading_1" class="loading_1 relative w-full h-full bg-color-type-light-gray"></div>
-                        <div name="loading_2" class="loading_SPD absolute h-full bg-color-type-psychic top-0">
+                        <div name="loading_2" class="loading_SPD absolute h-full bg-color-type-psychic top-0" style="background-color: ${renderBigPokemonCard.color}">
                            <style type="text/css">
                               .loading_SPD {
                                  position: absolute;
-                                 width: 25%;
+                                 width: ${renderBigPokemonCard.pokemonSpd}%;
                                  top: 0px;
                                  animation: bounceSPD 2s linear;
                               }
@@ -327,7 +343,7 @@ async function showBigPokemonCard(idPokemon: number) {
                                  }
 
                                  100% {
-                                    width: 25%;
+                                    width: ${renderBigPokemonCard.pokemonSpd}%;
                                  }
                               }
                            </style>
@@ -352,9 +368,7 @@ async function showBigPokemonCard(idPokemon: number) {
             <!-- pokemon-image position absolute -->
             <div name="pokemon-image"
                class="w-50 h-50 absolute top-20 left-position-50-from-12-5rem flex items-center justify-center"><img
-                  class="object-contain" src="${
-                     renderBigPokemonCard.pokemonImage
-                  }" alt="a picture from the current pokemon"></div>
+                  class="object-contain" src="${renderBigPokemonCard.pokemonImage}" alt="a picture from the current pokemon"></div>
 
             <!-- pokeball-image position absolute -->
             <div name="pokeball-image" class="w-52 h-52 absolute top-2 right-2 flex items-center justify-center"><img
@@ -367,6 +381,13 @@ async function showBigPokemonCard(idPokemon: number) {
 
 
          `);
+   }
+
+   if (renderBigPokemonCard.pokemonType2 == "undefined") {
+      let type2Html = document.getElementById("pokemonType2") as HTMLElement;
+      if (type2Html != null) {
+         type2Html.style.display = "none";
+      }
    }
 
    let bodyElement = document.getElementById("bodyElement");

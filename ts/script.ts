@@ -12,7 +12,7 @@ async function updateBaseDataJson() {
       await getPokemonValueByApi(i, url2);
 
       let type1ValueForColor = setColorCodeCurrentPokemon(
-         url1responseCurrentPokemonAsJson
+         url1responseCurrentPokemonAsJson,0
       );
       localPokemonsData[i] = new PokemonCardBaseData(
          url1responseCurrentPokemonAsJson["id"],
@@ -95,7 +95,7 @@ function createPokemonLocal(
    let type2Value = checkType2Exists(url1responseCurrentPokemonAsJson);
    let abilitie2Value = checkAbilitie2Exists(url1responseCurrentPokemonAsJson);
    let type1ValueForColor = setColorCodeCurrentPokemon(
-      url1responseCurrentPokemonAsJson
+      url1responseCurrentPokemonAsJson,0
    );
    localPokemonsData[i] = new PokemonCard(
       url1responseCurrentPokemonAsJson["id"],
@@ -138,9 +138,11 @@ function checkAbilitie2Exists(url1responseCurrentPokemonAsJson: any) {
    return abilitie2Value;
 }
 
-function setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson: any) {
+function setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson: any, typePosition:number) {
    let type1ValueForColor: string = "undefined";
-   switch (url1responseCurrentPokemonAsJson["types"][0]["type"]["name"]) {
+   switch (
+      url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]
+   ) {
       case "rock":
          type1ValueForColor = "#B69E31";
          break;
