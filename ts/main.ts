@@ -58,11 +58,11 @@ async function showBigPokemonCard(idPokemon: number) {
          (renderContainBigCard.innerHTML += `
    
 
-          <div id="renderBigCardPokemon" class="w-screen h-screen flex justify-center items-center z-10 bg-opacity-50"  onclick="closeBigCard()">
+          <div id="renderBigCardPokemon" class="w-screen h-screen flex justify-center items-center z-10 bg-gray-300 bg-opacity-80">
 
       <!-- pokemon card -->
       <!-- backgroung-color depending on current pokemon -->
-      <div name="background-current-pokemon-by-mobile" class="bg-current-pokemon-full" style="background-color:${
+      <div name="background-current-pokemon-by-mobile" class="bg-current-pokemon-full  md:rounded-lg md:pl-3 md:pr-3 md:pb-1" style="background-color:${
          renderBigPokemonCard.color
       }">
          <div id="pokecard" name="card-pokemon" class="w-90 h-640 relative border-r-075rem" style="background-color:${
@@ -72,11 +72,11 @@ async function showBigPokemonCard(idPokemon: number) {
             <!-- pokemon card name header -->
             <div name="pokemon-card-name-header"
                class="absolute top-6 left-5 right-5 w-80 h-8  flex items-start p-0 gap-4">
-               <div name="arrow-left-pokemon-card-name-header" class="w-6 h-8 flex justify-center items-center">
+               <div name="arrow-left-pokemon-card-name-header" class="w-6 h-8 flex justify-center items-center cursor-pointer" onclick="closeBigCard()">
                   <!-- pokemon-card-name-header -->
                   <img src="img/arrowLeft.png">
                </div>
-               <div name="pokemon-name" class="w-56 h-8 font-bold text-2xl flex items-center text-white">${
+               <div name="pokemon-name" class="w-56 h-8 font-bold text-2xl flex items-center justify-center text-white">${
                   renderBigPokemonCard.pokemonName[0].toUpperCase() +
                   renderBigPokemonCard.pokemonName.slice(1)
                }</div>
@@ -87,7 +87,7 @@ async function showBigPokemonCard(idPokemon: number) {
 
             <!-- current pokemon stats card -->
             <div name="current-pokemon-stats-card"
-               class="w-88 h-103 gap-4 absolute left-position-50-from-22rem bottom-1 bg-white rounded-lg flex flex-col items-center pt-14 px-5">
+               class="w-88 h-103 gap-y-3.5 absolute left-position-50-from-22rem bottom-4 md:bottom-2 bg-white rounded-lg flex flex-col items-center pt-14 px-5">
                <!-- pokemon types -->
                <div name="pokemon-type" class="flex justify-center p-0 gap-4 w-78 h-5">
                   <div name="type" class="w-14 h-5 py-05 px-2 flex flex-col bg-color-type-psychic rounded-lg">
@@ -336,7 +336,9 @@ async function showBigPokemonCard(idPokemon: number) {
                   </div>
 
                </div>
-
+<div class="w-full flex justify-center items-center mb-4">
+   <div name="closeBtn" class="px-4 border border-solid rounded-md hover:bg-gray-200 cursor-pointer" onclick="closeBigCard()">Close</div>
+</div>
 
 
             </div>
@@ -372,14 +374,11 @@ async function showBigPokemonCard(idPokemon: number) {
       bodyElement.classList.add("overflow-hidden");
    }
 
-let renderBigCardPokemon = document.getElementById("renderBigCardPokemon");
-if (renderBigCardPokemon != null) {
-   renderBigCardPokemon.style.backgroundColor= renderBigPokemonCard.color 
-}
-
-
-
-
+   // let renderBigCardPokemon = document.getElementById("renderBigCardPokemon");
+   // if (renderBigCardPokemon != null) {
+   //    renderBigCardPokemon.style.backgroundColor =
+   //       renderBigPokemonCard.color + "bb";
+   // }
 }
 
 //go start rendering
@@ -418,5 +417,18 @@ function closeBigCard() {
    let bodyElement = document.getElementById("bodyElement");
    if (bodyElement != null) {
       bodyElement.classList.remove("overflow-hidden");
+   }
+}
+let searchPokemonId: number;
+async function showBigPokemonCardBySearch() {
+   // let searchPokemon = document.getElementById("myInput") as HTMLElement;
+   const input = document.getElementById("myInput") as HTMLInputElement | null;
+   if (input != null) {
+      let searchPokemon = input.value.toLowerCase();
+      let response = await fetch(url1 + searchPokemon);
+      let searchPokemonToJson = await response.json();
+      searchPokemonId = searchPokemonToJson["id"];
+      showBigPokemonCard(searchPokemonId);
+      input.value = "";
    }
 }
