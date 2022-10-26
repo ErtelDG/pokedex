@@ -447,19 +447,25 @@ async function checkColorForType2(type2: string) {
 }
 
 async function fixFormatBugByApiInFlavor() {
+   let indexInArrayFlavour: number = 0;
+
+   for (
+      let y = 0;
+      y < await url2responseCurrentPokemonAsJson["flavor_text_entries"].length;
+      y++
+   ) {
+      const element = await url2responseCurrentPokemonAsJson["flavor_text_entries"][y];
+      if (await element["language"]["name"] == "en") {
+         indexInArrayFlavour = y;
+         break;
+      }
+   }
+
    //fix format bug:
    let flavorOld = await url2responseCurrentPokemonAsJson[
       "flavor_text_entries"
-   ][0]["flavor_text"];
+   ][indexInArrayFlavour]["flavor_text"];
    let newValue = flavorOld.replace("\f", " ");
-   if (
-      url2responseCurrentPokemonAsJson["generation"]["name"] == "generation-v"
-   ) {
-      flavorOld = await url2responseCurrentPokemonAsJson[
-         "flavor_text_entries"
-      ][1]["flavor_text"];
-      newValue = flavorOld.replace("\f", " ");
-   }
 
    return newValue;
 }

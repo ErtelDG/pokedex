@@ -13,6 +13,9 @@ let generation8: any = {};
 let generation9: any = {};
 let searchAllPokemonsArray: string[] = [];
 
+let type2 = "undefined";
+let abilities2 = "undefined";
+let color2 = "undefined";
 
 //ulr´s api
 let url1: string = "https://pokeapi.co/api/v2/pokemon/"; //poke api v2 url for stats
@@ -101,7 +104,7 @@ class PokemonCard {
       this.pokemonSpd = pokemonSpd;
       this.pokemonType2 = pokemonType2;
       this.pokemonAbilitie2 = pokemonAbilitie2;
-      this.pokemonColor2 = pokemonColor2
+      this.pokemonColor2 = pokemonColor2;
    }
 }
 
