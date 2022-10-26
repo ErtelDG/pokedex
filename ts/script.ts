@@ -611,7 +611,7 @@ async function createAPokemonObject(
    let createObject = new PokemonCard(
       await url2responseCurrentPokemonAsJson["id"],
       (await url2responseCurrentPokemonAsJson["name"][0].toUpperCase()) +
-         (await url2responseCurrentPokemonAsJson["name"].slice()),
+         (await url2responseCurrentPokemonAsJson["name"].slice(1)),
       await url1responseCurrentPokemonAsJson["sprites"]["other"][
          "official-artwork"
       ]["front_default"],
