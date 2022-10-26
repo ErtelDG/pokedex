@@ -39,14 +39,13 @@ async function showBigPokemonCard(idPokemon: number) {
    );
    renderBigCard(renderBigPokemonCard);
    setAllUndefinedStatsDisplayNone(renderBigPokemonCard);
-
-   let bodyElement = document.getElementById("bodyElement");
-   if (bodyElement != null) {
-      bodyElement.classList.add("overflow-hidden");
-   }
+   setOverflowHiddenBody();
 }
 
-//go start rendering
+/**
+ * go start rendering
+ *
+ */
 async function init() {
    clearContainerWithSmallPokemonCards();
    await loadPokemonBaseJSON();
@@ -55,6 +54,10 @@ async function init() {
    loadPokemonNamesInArray();
 }
 
+/**
+ * function => close big pokemon card
+ *
+ */
 function closeBigCard() {
    let renderContainBigCard = document.getElementById("renderBigPokemon");
    if (renderContainBigCard != null) {
@@ -66,9 +69,12 @@ function closeBigCard() {
    }
 }
 
+/**
+ * search a special pokemon in the complete data base
+ *
+ */
 let searchPokemonId: number;
 async function showBigPokemonCardBySearch() {
-   // let searchPokemon = document.getElementById("myInput") as HTMLElement;
    const input = document.getElementById("myInput") as HTMLInputElement | null;
    if (input != null) {
       let searchPokemon = input.value.toLowerCase();

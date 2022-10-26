@@ -1,11 +1,17 @@
-//clear container with small pokemon cards
+/**
+ * clear container with small pokemon cards
+ *
+ */
 function clearContainerWithSmallPokemonCards() {
    if (containerRenderAllPokemonSmall != null) {
       containerRenderAllPokemonSmall.innerHTML = " ";
    }
 }
 
-// update the absolte base data of the pokemon
+/**
+ * update the absolte base data of the pokemon
+ *
+ */
 async function updateBaseDataJson() {
    for (let i = 1; i <= 10; i++) {
       await getPokemonValueByApi(i, url1);
@@ -29,13 +35,21 @@ async function updateBaseDataJson() {
    }
 }
 
-//load pokemon base data from JSON
+/**
+ * load pokemon base data from JSON
+ *
+ */
 async function loadPokemonBaseJSON() {
    let response = await fetch("pokemonBaseData.json");
    localPokemonsData = await response.json();
 }
 
-//to fetch poke api values
+/**
+ * to fetch poke api values
+ *
+ * @param currentPokemon => chose current pokemon
+ * @param urlApi  => request url to pokemon datas
+ */
 async function getPokemonValueByApi(currentPokemon: number, urlApi: string) {
    try {
       let response;
@@ -51,6 +65,11 @@ async function getPokemonValueByApi(currentPokemon: number, urlApi: string) {
    }
 }
 
+/**
+ * function and response, when request to api was incorrect or erroneous
+ *
+ * @param currentPokemon => chose current pokemon
+ */
 async function errorFunction(currentPokemon: number) {
    counterRequestFailToApi++;
    url1responseCurrentPokemonAsJson = {
@@ -70,7 +89,11 @@ async function errorFunction(currentPokemon: number) {
    }
 }
 
-// pokemon save local
+/**
+ * pokemon save local
+ *
+ * @param i => id of the pokemon to save
+ */
 function savePokemonLocal(i: number) {
    if (
       url1responseCurrentPokemonAsJson != null &&
@@ -87,7 +110,13 @@ function savePokemonLocal(i: number) {
    }
 }
 
-//creat pokemon card at values api
+/**
+ * creat pokemon card at values api
+ *
+ * @param i => id of the pokemon for the request
+ * @param url1responseCurrentPokemonAsJson  => url1 of the pokemon for the request of stats/values
+ * @param url2responseCurrentPokemonAsJson => url2 of the pokemon for the request of stats/values
+ */
 function createPokemonLocal(
    i: number,
    url1responseCurrentPokemonAsJson: any,
@@ -123,6 +152,12 @@ function createPokemonLocal(
    );
 }
 
+/**
+ * function checks if type2 exists for the pokemon
+ *
+ * @param url1responseCurrentPokemonAsJson => url of the pokemon for the request of the value
+ * @returns => return undefined or the value when exists
+ */
 function checkType2Exists(url1responseCurrentPokemonAsJson: any) {
    let type2Value: string = "undefined";
    if (url1responseCurrentPokemonAsJson["types"].length > 1) {
@@ -131,6 +166,12 @@ function checkType2Exists(url1responseCurrentPokemonAsJson: any) {
    return type2Value;
 }
 
+/**
+ * function checks if abilitie2 exists for the pokemon
+ *
+ * @param url1responseCurrentPokemonAsJson => url of the pokemon for the request of the value
+ * @returns => return undefined or the value when exists
+ */
 function checkAbilitie2Exists(url1responseCurrentPokemonAsJson: any) {
    let abilitie2Value: string = "undefined";
    if (url1responseCurrentPokemonAsJson["abilities"].length > 1) {
@@ -140,6 +181,13 @@ function checkAbilitie2Exists(url1responseCurrentPokemonAsJson: any) {
    return abilitie2Value;
 }
 
+/**
+ * function checks the second color for the second type, when this exists for the pokemon
+ *
+ * @param url1responseCurrentPokemonAsJson => url of the pokemon for the request of the value
+ * @param typePosition  => index of the second type position
+ * @returns => return undefined or set the correct color
+ */
 function setColorCodeCurrentPokemon(
    url1responseCurrentPokemonAsJson: any,
    typePosition: number
@@ -208,7 +256,11 @@ function setColorCodeCurrentPokemon(
    }
    return type1ValueForColor;
 }
-//sort all pokemons to the generation
+
+/**
+ * sort all pokemons to the generation
+ *
+ */
 async function sortPokemonToGeneration() {
    for (
       let k = currentPokemon;
@@ -250,7 +302,11 @@ async function sortPokemonToGeneration() {
    }
 }
 
-// redner small pokemon cards
+/**
+ * redner small pokemon cards
+ *
+ * @param i => the id of the pokemon who to be render
+ *  */
 async function renderSmallPokemonCard(i: number) {
    let generationSelected;
    switch (i) {
@@ -300,6 +356,7 @@ async function renderSmallPokemonCard(i: number) {
          }
       }
    }
+
    createRenderSmallPokemonCard(generationSelected);
    async function createRenderSmallPokemonCard(generationSelected: any) {
       if (containerRenderAllPokemonSmall != null) {
@@ -336,8 +393,10 @@ async function renderSmallPokemonCard(i: number) {
       }
    }
 
-   // Prüfen Erstellung Data Liste!
-   //renderSearchList(generationSelected);
+   /**
+    * renderSearchList(generationSelected);
+    *
+    */
 
    let sortBtn = document.getElementById("sortBtnAZ");
    if (sortBtn != null) {
@@ -347,7 +406,11 @@ async function renderSmallPokemonCard(i: number) {
    pokemonsSearchId?.innerHTML;
 }
 
-//function sort the current generation
+/**
+ * function sort the current generation
+ *
+ * @param generation => is the current generation to be sorted
+ */
 async function sortPokemonAZ(generation: any) {
    let sortArray: any[] = [];
 
@@ -375,6 +438,12 @@ async function sortPokemonAZ(generation: any) {
    }
 }
 
+/**
+ * function create all small pokemon card for the current generation
+ *
+ * @param generation => is the current generation to be create
+ * @param indexPokemon  => is the id for the pokemons to be render
+ */
 async function renderSortPokemonCard(generation: any, indexPokemon: any) {
    if (containerRenderAllPokemonSmall != null) {
       containerRenderAllPokemonSmall.innerHTML = "";
@@ -395,7 +464,10 @@ async function renderSortPokemonCard(generation: any, indexPokemon: any) {
    }
 }
 
-//render all pokemons in array
+/**
+ * load all pokemons in a array
+ *
+ */
 function loadPokemonNamesInArray() {
    for (let i = 1; i <= Object.keys(localPokemonsData).length; i++) {
       const element =
@@ -406,13 +478,21 @@ function loadPokemonNamesInArray() {
    searchAllPokemonsArray.sort();
 }
 
-//render next when coming to the bottom at the side
+/**
+ *render next when coming to the bottom at the side
+ *
+ */
 function renderMorePokemonCardsSmall() {
    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       alert("Unten angekommen!"); // you're at the bottom of the page
    }
 }
 
+/**
+ * check and write type two if exists
+ *
+ * @returns => text or undefined
+ */
 async function checkType2() {
    let checkType2 = "undefined";
    if (url1responseCurrentPokemonAsJson["types"].length > 1) {
@@ -425,6 +505,11 @@ async function checkType2() {
    return checkType2;
 }
 
+/**
+ * check and write abilitie two if exists
+ *
+ * @returns => value or undefined
+ */
 async function checkAbilities2() {
    let checkAbilities2 = "undefined";
    if (url1responseCurrentPokemonAsJson["abilities"].length > 1) {
@@ -434,6 +519,12 @@ async function checkAbilities2() {
    return checkAbilities2;
 }
 
+/**
+ * creat the second color, when type2 exists
+ *
+ * @param type2 => value type2 exists or not
+ * @returns  => the correct color
+ */
 async function checkColorForType2(type2: string) {
    let checkColor2 = "undefined";
    if (type2 != "undefined") {
@@ -446,22 +537,33 @@ async function checkColorForType2(type2: string) {
    return checkColor2;
 }
 
+/**
+ * fix the format bug in the api and give correct language
+ *
+ * @returns => correct language
+ */
 async function fixFormatBugByApiInFlavor() {
    let indexInArrayFlavour: number = 0;
 
    for (
       let y = 0;
-      y < await url2responseCurrentPokemonAsJson["flavor_text_entries"].length;
+      y <
+      (await url2responseCurrentPokemonAsJson["flavor_text_entries"].length);
       y++
    ) {
-      const element = await url2responseCurrentPokemonAsJson["flavor_text_entries"][y];
-      if (await element["language"]["name"] == "en") {
+      const element = await url2responseCurrentPokemonAsJson[
+         "flavor_text_entries"
+      ][y];
+      if ((await element["language"]["name"]) == "en") {
          indexInArrayFlavour = y;
          break;
       }
    }
 
-   //fix format bug:
+   /**
+    * fix format bug:
+    *
+    */
    let flavorOld = await url2responseCurrentPokemonAsJson[
       "flavor_text_entries"
    ][indexInArrayFlavour]["flavor_text"];
@@ -470,6 +572,11 @@ async function fixFormatBugByApiInFlavor() {
    return newValue;
 }
 
+/**
+ * if a value does not exist for the current pokemon, it should not be displayed
+ *
+ * @param renderBigPokemonCard => value of the current popkemon object
+ */
 function setAllUndefinedStatsDisplayNone(renderBigPokemonCard: PokemonCard) {
    if (renderBigPokemonCard.pokemonType2 == "undefined") {
       let type2Html = document.getElementById("pokemonType2") as HTMLElement;
@@ -479,6 +586,19 @@ function setAllUndefinedStatsDisplayNone(renderBigPokemonCard: PokemonCard) {
    }
 }
 
+/**
+ *
+ * function create a pokemon object
+ *
+ * @param url1responseCurrentPokemonAsJson => url of the pokemon for the request of the value
+ * @param url2responseCurrentPokemonAsJson => url of the pokemon for the request of the value
+ * @param color => correct color for the current pokemon
+ * @param flavorNewFixed => give it in correct language
+ * @param type2 => exists or not/undefined
+ * @param abilities2 => exists or not/undefined
+ * @param color2 => exists or not/undefined
+ * @returns => give a new pokemon object
+ */
 async function createAPokemonObject(
    url1responseCurrentPokemonAsJson: any,
    url2responseCurrentPokemonAsJson: any,
@@ -523,11 +643,27 @@ async function createAPokemonObject(
    return createObject;
 }
 
+/**
+ * create a big pokemon card
+ *
+ * @param renderBigPokemonCard => give the card back
+ */
 function renderBigCard(renderBigPokemonCard: PokemonCard) {
    let renderContainBigCard = document.getElementById("renderBigPokemon");
    if (renderContainBigCard != null) {
       renderContainBigCard.innerHTML = " ";
       renderContainBigCard.innerHTML +=
          renderBigPokemonCardWithStats(renderBigPokemonCard);
+   }
+}
+
+/**
+ * function add overflow hidden when it need
+ *
+ */
+function setOverflowHiddenBody() {
+   let bodyElement = document.getElementById("bodyElement");
+   if (bodyElement != null) {
+      bodyElement.classList.add("overflow-hidden");
    }
 }
