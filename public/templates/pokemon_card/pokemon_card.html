@@ -14,7 +14,9 @@
 
 <body class="m-0 w-screen h-screen">
 
-   <div id="renderBigCardPokemon" class="w-screen h-screen flex justify-center items-center">
+   <div id="renderBigCardPokemon"
+      class="w-screen h-screen flex justify-center items-center z-10 bg-gray-300 bg-opacity-50"
+      onclick="closeBigCard()">
 
       <!-- pokemon card -->
       <!-- backgroung-color depending on current pokemon -->
@@ -26,14 +28,9 @@
                class="absolute top-6 left-5 right-5 w-80 h-8  flex items-start p-0 gap-4">
                <div name="arrow-left-pokemon-card-name-header" class="w-6 h-8 flex justify-center items-center">
                   <!-- pokemon-card-name-header -->
-                  <svg width="1.125rem" height="1.125rem" viewBox="0 0 1.125rem 1.125rem" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                     <path
-                        d="M9.23045 17.5117L10.0039 16.7383C10.1869 16.5552 10.1869 16.2584 10.0039 16.0754L3.94408 10.0156H17.2812C17.5401 10.0156 17.75 9.80575 17.75 9.54688V8.45313C17.75 8.19427 17.5401 7.98438 17.2812 7.98438H3.94408L10.0039 1.92462C10.1869 1.74157 10.1869 1.44477 10.0039 1.26169L9.23045 0.488329C9.04741 0.305282 8.75061 0.305282 8.56752 0.488329L0.387285 8.66856C0.204238 8.85161 0.204238 9.14841 0.387285 9.33149L8.56752 17.5117C8.75057 17.6948 9.04737 17.6948 9.23045 17.5117Z"
-                        fill="white" />
-                  </svg>
+                  <img src="img/arrowLeft.png">
                </div>
-               <div name="pokemon-name" class="w-56 h-8 font-bold text-2xl flex items-center text-white">Mew</div>
+               <div name="pokemon-name" class="w-56 h-8 font-bold  text-2xl flex items-center text-white">Mew</div>
                <div name="pokemon-number" class="w-8 h-8 font-bold text-xs flex items-center text-white">#152</div>
             </div>
 
@@ -41,7 +38,7 @@
             <div name="current-pokemon-stats-card"
                class="w-88 h-103 gap-4 absolute left-position-50-from-22rem bottom-1 bg-white rounded-lg flex flex-col items-center pt-14 px-5">
                <!-- pokemon types -->
-               <div name="pokemon-type-physic" class="flex justify-center p-0 gap-4 w-78 h-5">
+               <div name="pokemon-type" class="flex justify-center p-0 gap-4 w-78 h-5">
                   <div name="type" class="w-14 h-5 py-05 px-2 flex flex-col bg-color-type-psychic rounded-lg">
                      <div class="w-10 h-4 text-xs text-white flex items-center justify-center">Psychic</div>
                   </div>
@@ -308,25 +305,6 @@
             <div name="pokeball-image" class="w-52 h-52 absolute top-2 right-2 flex items-center justify-center"><img
                   class="object-contain" src="img/Pokeball.png" alt="a picture from the current pokemon"></div>
 
-            <!-- arrow left position absolute-->
-            <div name="frame-vector-arrow-right" class="absolute w-2 h-4 left-9 top-52 test">
-               <svg width="0.5rem" height="0.875rem" transform="rotate(180)" viewBox="0 0 0.5rem 0.875rem" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                     d="M7.228 13.8093L7.84671 13.1907C7.99315 13.0442 7.99315 12.8068 7.84671 12.6603L2.19987 6.99999L7.84671 1.33968C7.99315 1.19324 7.99315 0.955807 7.84671 0.809338L7.228 0.190619C7.08156 0.0441818 6.84412 0.0441818 6.69765 0.190619L0.153465 6.73481C0.00702763 6.88124 0.00702763 7.11868 0.153465 7.26515L6.69765 13.8093C6.84412 13.9558 7.08156 13.9558 7.228 13.8093Z"
-                     fill="white" />
-               </svg>
-            </div>
-
-            <!-- arrow right  position absolute-->
-            <div name="frame-vector-arrow-right" class="absolute w-2 h-4 right-9 top-52 test">
-               <svg width="0.5rem" height="0.875rem" viewBox="0 0 0.5rem 0.875rem" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                     d="M7.228 13.8093L7.84671 13.1907C7.99315 13.0442 7.99315 12.8068 7.84671 12.6603L2.19987 6.99999L7.84671 1.33968C7.99315 1.19324 7.99315 0.955807 7.84671 0.809338L7.228 0.190619C7.08156 0.0441818 6.84412 0.0441818 6.69765 0.190619L0.153465 6.73481C0.00702763 6.88124 0.00702763 7.11868 0.153465 7.26515L6.69765 13.8093C6.84412 13.9558 7.08156 13.9558 7.228 13.8093Z"
-                     fill="white" />
-               </svg>
-            </div>
          </div>
       </div>
    </div>
