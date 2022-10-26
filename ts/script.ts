@@ -12,7 +12,8 @@ async function updateBaseDataJson() {
       await getPokemonValueByApi(i, url2);
 
       let type1ValueForColor = setColorCodeCurrentPokemon(
-         url1responseCurrentPokemonAsJson,0
+         url1responseCurrentPokemonAsJson,
+         0
       );
       localPokemonsData[i] = new PokemonCardBaseData(
          url1responseCurrentPokemonAsJson["id"],
@@ -95,7 +96,8 @@ function createPokemonLocal(
    let type2Value = checkType2Exists(url1responseCurrentPokemonAsJson);
    let abilitie2Value = checkAbilitie2Exists(url1responseCurrentPokemonAsJson);
    let type1ValueForColor = setColorCodeCurrentPokemon(
-      url1responseCurrentPokemonAsJson,0
+      url1responseCurrentPokemonAsJson,
+      0
    );
    localPokemonsData[i] = new PokemonCard(
       url1responseCurrentPokemonAsJson["id"],
@@ -138,7 +140,10 @@ function checkAbilitie2Exists(url1responseCurrentPokemonAsJson: any) {
    return abilitie2Value;
 }
 
-function setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson: any, typePosition:number) {
+function setColorCodeCurrentPokemon(
+   url1responseCurrentPokemonAsJson: any,
+   typePosition: number
+) {
    let type1ValueForColor: string = "undefined";
    switch (
       url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]
@@ -405,5 +410,118 @@ function loadPokemonNamesInArray() {
 function renderMorePokemonCardsSmall() {
    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       alert("Unten angekommen!"); // you're at the bottom of the page
+   }
+}
+
+async function checkType2() {
+   let checkType2 = "undefined";
+   if (url1responseCurrentPokemonAsJson["types"].length > 1) {
+      checkType2 =
+         url1responseCurrentPokemonAsJson["types"][1]["type"][
+            "name"
+         ][0].toUpperCase(0) +
+         url1responseCurrentPokemonAsJson["types"][1]["type"]["name"].slice(1);
+   }
+   return checkType2;
+}
+
+async function checkAbilities2() {
+   let checkAbilities2 = "undefined";
+   if (url1responseCurrentPokemonAsJson["abilities"].length > 1) {
+      checkAbilities2 =
+         url1responseCurrentPokemonAsJson["abilities"][1]["ability"]["name"];
+   }
+   return checkAbilities2;
+}
+
+async function checkColorForType2(type2: string) {
+   let checkColor2 = "undefined";
+   if (type2 != "undefined") {
+      let farbcode = setColorCodeCurrentPokemon(
+         url1responseCurrentPokemonAsJson,
+         1
+      );
+      checkColor2 = farbcode;
+   }
+   return checkColor2;
+}
+
+async function fixFormatBugByApiInFlavor() {
+   //fix format bug:
+   let flavorOld = await url2responseCurrentPokemonAsJson[
+      "flavor_text_entries"
+   ][0]["flavor_text"];
+   let newValue = flavorOld.replace("\f", " ");
+   if (
+      url2responseCurrentPokemonAsJson["generation"]["name"] == "generation-v"
+   ) {
+      flavorOld = await url2responseCurrentPokemonAsJson[
+         "flavor_text_entries"
+      ][1]["flavor_text"];
+      newValue = flavorOld.replace("\f", " ");
+   }
+
+   return newValue;
+}
+
+function setAllUndefinedStatsDisplayNone(renderBigPokemonCard: PokemonCard) {
+   if (renderBigPokemonCard.pokemonType2 == "undefined") {
+      let type2Html = document.getElementById("pokemonType2") as HTMLElement;
+      if (type2Html != null) {
+         type2Html.style.display = "none";
+      }
+   }
+}
+
+async function createAPokemonObject(
+   url1responseCurrentPokemonAsJson: any,
+   url2responseCurrentPokemonAsJson: any,
+   color: string,
+   flavorNewFixed: string,
+   type2: string | undefined,
+   abilities2: string | undefined,
+   color2: string | undefined
+) {
+   let createObject = new PokemonCard(
+      await url2responseCurrentPokemonAsJson["id"],
+      (await url2responseCurrentPokemonAsJson["name"][0].toUpperCase()) +
+         (await url2responseCurrentPokemonAsJson["name"].slice()),
+      await url1responseCurrentPokemonAsJson["sprites"]["other"][
+         "official-artwork"
+      ]["front_default"],
+      (await url1responseCurrentPokemonAsJson["types"][0]["type"][
+         "name"
+      ][0].toUpperCase()) +
+         url1responseCurrentPokemonAsJson["types"][0]["type"]["name"].slice(1),
+      color,
+      await url2responseCurrentPokemonAsJson["generation"]["name"],
+      (await url1responseCurrentPokemonAsJson["weight"]) / 10,
+      (await url1responseCurrentPokemonAsJson["height"]) / 10,
+      (await url1responseCurrentPokemonAsJson["abilities"][0]["ability"][
+         "name"
+      ][0].toUpperCase()) +
+         url1responseCurrentPokemonAsJson["abilities"][0]["ability"][
+            "name"
+         ].slice(1),
+      flavorNewFixed,
+      await url1responseCurrentPokemonAsJson["stats"][0]["base_stat"],
+      await url1responseCurrentPokemonAsJson["stats"][1]["base_stat"],
+      await url1responseCurrentPokemonAsJson["stats"][2]["base_stat"],
+      await url1responseCurrentPokemonAsJson["stats"][3]["base_stat"],
+      await url1responseCurrentPokemonAsJson["stats"][4]["base_stat"],
+      await url1responseCurrentPokemonAsJson["stats"][5]["base_stat"],
+      type2,
+      abilities2,
+      color2
+   );
+   return createObject;
+}
+
+function renderBigCard(renderBigPokemonCard: PokemonCard) {
+   let renderContainBigCard = document.getElementById("renderBigPokemon");
+   if (renderContainBigCard != null) {
+      renderContainBigCard.innerHTML = " ";
+      renderContainBigCard.innerHTML +=
+         renderBigPokemonCardWithStats(renderBigPokemonCard);
    }
 }
