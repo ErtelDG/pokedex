@@ -64,11 +64,22 @@ let searchPokemonId;
 async function showBigPokemonCardBySearch() {
     const input = document.getElementById("myInput");
     if (input != null) {
-        let searchPokemon = input.value.toLowerCase();
-        let response = await fetch(url1 + searchPokemon);
-        let searchPokemonToJson = await response.json();
-        searchPokemonId = searchPokemonToJson["id"];
-        showBigPokemonCard(searchPokemonId);
-        input.value = "";
+        let inputCorrect = searchAllPokemonsArray.includes(input.value[0].toUpperCase() + input.value.slice(1));
+        if (inputCorrect === false) {
+            input.value = input.value + " is not a Pokemon!";
+            setTimeout(() => {
+                input.value = "";
+            }, 2500);
+        }
+        else {
+            if (input != null) {
+                let searchPokemon = input.value.toLowerCase();
+                let response = await fetch(url1 + searchPokemon);
+                let searchPokemonToJson = await response.json();
+                searchPokemonId = searchPokemonToJson["id"];
+                showBigPokemonCard(searchPokemonId);
+                input.value = "";
+            }
+        }
     }
 }
