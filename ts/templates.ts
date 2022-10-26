@@ -183,7 +183,7 @@ function renderBigPokemonCardWithStats(
                            <style type="text/css">
                               .loading_HP {
                                  position: absolute;
-                                 width: ${renderBigPokemonCard.pokemonHP}%;
+                                 width: calc(100/255*${renderBigPokemonCard.pokemonHP}%);
                                  top: 0px;
                                  animation: bounceHP 2s linear;
                               }
@@ -194,7 +194,7 @@ function renderBigPokemonCardWithStats(
                                  }
 
                                  100% {
-                                    width: ${renderBigPokemonCard.pokemonHP}%;
+                                    width: calc(100/255*${renderBigPokemonCard.pokemonHP}%);
                                  }
                               }
                            </style>
@@ -206,7 +206,7 @@ function renderBigPokemonCardWithStats(
                            <style type="text/css">
                               .loading_ATK {
                                  position: absolute;
-                                 width: calc(100/150*${renderBigPokemonCard.pokemonAtk}%);
+                                 width: calc(100/190*${renderBigPokemonCard.pokemonAtk}%);
                                  top: 0px;
                                  animation: bounceATK 2s linear;
                               }
@@ -217,7 +217,7 @@ function renderBigPokemonCardWithStats(
                                  }
 
                                  100% {
-                                    width: calc(100/150*${renderBigPokemonCard.pokemonAtk}%);
+                                    width: calc(100/190*${renderBigPokemonCard.pokemonAtk}%);
                                  }
                               }
                            </style>
@@ -229,7 +229,7 @@ function renderBigPokemonCardWithStats(
                            <style type="text/css">
                               .loading_DEF {
                                  position: absolute;
-                                 width: calc(100/150*${renderBigPokemonCard.pokemonDef}%);
+                                 width: calc(100/230*${renderBigPokemonCard.pokemonDef}%);
                                  top: 0px;
                                  animation: bounceDEF 2s linear;
                               }
@@ -240,7 +240,7 @@ function renderBigPokemonCardWithStats(
                                  }
 
                                  100% {
-                                    width: calc(100/150*${renderBigPokemonCard.pokemonDef}%);
+                                    width: calc(100/230*${renderBigPokemonCard.pokemonDef}%);
                                  }
                               }
                            </style>
@@ -252,7 +252,7 @@ function renderBigPokemonCardWithStats(
                            <style type="text/css">
                               .loading_SATK {
                                  position: absolute;
-                                 width: calc(100/150*${renderBigPokemonCard.pokemonSatk}%);
+                                 width: calc(100/194*${renderBigPokemonCard.pokemonSatk}%);
                                  top: 0px; 
                                  animation: bounceSATK 2s linear;
                               }
@@ -263,7 +263,7 @@ function renderBigPokemonCardWithStats(
                                  }
 
                                  100% {
-                                    width: calc(100/150*${renderBigPokemonCard.pokemonSatk}%);
+                                    width: calc(100/194*${renderBigPokemonCard.pokemonSatk}%);
                                  }
                               }
                            </style>
@@ -275,7 +275,7 @@ function renderBigPokemonCardWithStats(
                            <style type="text/css">
                               .loading_SDEF {
                                  position: absolute;
-                                 width: calc(100/150*${renderBigPokemonCard.pokemonSdef}%);
+                                 width: calc(100/230*${renderBigPokemonCard.pokemonSdef}%);
                                  top: 0px;
                                  animation: bounceSDEF 2s linear;
                               }
@@ -286,7 +286,7 @@ function renderBigPokemonCardWithStats(
                                  }
 
                                  100% {
-                                    width: calc(100/150*${renderBigPokemonCard.pokemonSdef}%);
+                                    width: calc(100/230*${renderBigPokemonCard.pokemonSdef}%);
                                  }
                               }
                            </style>
@@ -298,7 +298,7 @@ function renderBigPokemonCardWithStats(
                            <style type="text/css">
                               .loading_SPD {
                                  position: absolute;
-                                 width: calc(100/150*${renderBigPokemonCard.pokemonSpd}%);
+                                 width: calc(100/180*${renderBigPokemonCard.pokemonSpd}%);
                                  top: 0px;
                                  animation: bounceSPD 2s linear;
                               }
@@ -309,7 +309,7 @@ function renderBigPokemonCardWithStats(
                                  }
 
                                  100% {
-                                    width: calc(100/150*${renderBigPokemonCard.pokemonSpd}%);
+                                    width: calc(100/180*${renderBigPokemonCard.pokemonSpd}%);
                                  }
                               }
                            </style>
