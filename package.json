@@ -16,6 +16,7 @@
       "camelcase-css": "^2.0.1",
       "chokidar": "^3.5.3",
       "color-name": "^1.1.4",
+      "cross-env": "^7.0.3",
       "cssesc": "^3.0.0",
       "defined": "^1.0.1",
       "detective": "^5.2.1",
@@ -65,7 +66,8 @@
       "yaml": "^1.10.2"
    },
    "scripts": {
-      "dev": "npx tailwindcss-cli@latest build -i ./src/input.css -o ./public/css/style.css"
+      "dev": "npx tailwindcss-cli@latest build -i ./src/input.css -o ./public/css/style.css",
+      "build": "cross-env NODE_ENV=production npx tailwindcss-cli@latest build -i ./src/input.css -o ./public/css/style.css"
    },
    "keywords": [],
    "author": "",
