@@ -667,3 +667,19 @@ function setOverflowHiddenBody() {
       bodyElement.classList.add("overflow-hidden");
    }
 }
+
+
+/**
+ * hid the simulation box from start
+ * 
+ */
+function hiddenSimulationBox() {
+   let hiddenSimulationBox = document.getElementById(
+      "simulationBox"
+   ) as HTMLElement;
+   if (hiddenSimulationBox != null) {
+      setTimeout(() => {
+         hiddenSimulationBox.style.display = "none";
+      }, 11000);
+   }
+}

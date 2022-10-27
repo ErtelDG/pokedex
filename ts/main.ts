@@ -52,6 +52,7 @@ async function init() {
    await sortPokemonToGeneration();
    renderSmallPokemonCard(1);
    loadPokemonNamesInArray();
+   hiddenSimulationBox();
 }
 
 /**

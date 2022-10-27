@@ -41,6 +41,7 @@ async function init() {
     await sortPokemonToGeneration();
     renderSmallPokemonCard(1);
     loadPokemonNamesInArray();
+    hiddenSimulationBox();
 }
 /**
  * function => close big pokemon card

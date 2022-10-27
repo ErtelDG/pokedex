@@ -24,7 +24,7 @@ Use a more readable tab size (opinionated).
 html {
   -moz-tab-size: 4;
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
 }
 
 /**
@@ -58,15 +58,16 @@ Improve consistency of default fonts in all browsers. (https://github.com/sindre
 
 body {
   font-family:
-		system-ui,
-		-apple-system, /* Firefox supports this but not yet `system-ui` */
-		'Segoe UI',
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif,
-		'Apple Color Emoji',
-		'Segoe UI Emoji';
+    system-ui,
+    -apple-system,
+    /* Firefox supports this but not yet `system-ui` */
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji';
 }
 
 /*
@@ -97,7 +98,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr[title] {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /**
@@ -119,12 +120,12 @@ kbd,
 samp,
 pre {
   font-family:
-		ui-monospace,
-		SFMono-Regular,
-		Consolas,
-		'Liberation Mono',
-		Menlo,
-		monospace;
+    ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    'Liberation Mono',
+    Menlo,
+    monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -445,7 +446,8 @@ textarea {
   resize: vertical;
 }
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder,
+textarea::-moz-placeholder {
   opacity: 1;
   color: #9ca3af;
 }
@@ -576,7 +578,9 @@ video {
   display: none;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
@@ -747,11 +751,11 @@ html {
 
 .text-xxs {
   font-size: 0.625rem
-         /* 10px */
-      ;
+    /* 10px */
+  ;
   line-height: 1rem
-         /* 16px */
-      ;
+    /* 16px */
+  ;
 }
 
 .text-line-xxs {
@@ -1031,14 +1035,18 @@ html {
 }
 
 @-webkit-keyframes ping {
-  75%, 100% {
+
+  75%,
+  100% {
     transform: scale(2);
     opacity: 0;
   }
 }
 
 @keyframes ping {
-  75%, 100% {
+
+  75%,
+  100% {
     transform: scale(2);
     opacity: 0;
   }
@@ -1057,30 +1065,34 @@ html {
 }
 
 @-webkit-keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
+    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
 
   50% {
     transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
+    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
 
   50% {
     transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
@@ -1220,12 +1232,12 @@ html {
 
 .object-contain {
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .object-center {
   -o-object-position: center;
-     object-position: center;
+  object-position: center;
 }
 
 .p-0 {
@@ -1320,7 +1332,9 @@ html {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   --tw-shadow: 0 0 #0000;
 }
 
@@ -1329,8 +1343,13 @@ html {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-*, ::before, ::after {
-  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+*,
+::before,
+::after {
+  --tw-ring-inset: var(--tw-empty,
+      /*!*/
+      /*!*/
+    );
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgba(59, 130, 246, 0.5);
@@ -1403,28 +1422,33 @@ html {
   align-items: center;
   background-color: white;
   z-index: -10;
+  overflow: hidden;
   -webkit-animation: z-index-position 10s ease-in;
-          animation: z-index-position 10s ease-in;
+  animation: z-index-position 10s ease-in;
 }
 
 @-webkit-keyframes z-index-position {
   0% {
     z-index: 0;
-    background-color: #7f8c8d
+    background-color: #7f8c8d;
+    overflow: hidden;
   }
 
   70% {
     background-color: #7f8c8d;
+    overflow: hidden;
   }
 
-  99%{
+  99% {
     z-index: 10;
     background-color: #7f8c8daa;
+    overflow: hidden;
   }
 
   100% {
     z-index: -10;
     background-color: white;
+    overflow: hidden;
   }
 }
 
@@ -1438,7 +1462,7 @@ html {
     background-color: #7f8c8d;
   }
 
-  99%{
+  99% {
     z-index: 10;
     background-color: #7f8c8daa;
   }
@@ -1459,7 +1483,7 @@ html {
   align-items: center;
   position: relative;
   -webkit-animation: rotating 7s ease-out;
-          animation: rotating 7s ease-out;
+  animation: rotating 7s ease-out;
 }
 
 @-webkit-keyframes rotating {
@@ -1505,7 +1529,7 @@ html {
   left: 0px;
   top: calc(-100vh - 8.125rem);
   -webkit-animation: container-top 7s;
-          animation: container-top 7s;
+  animation: container-top 7s;
 }
 
 @-webkit-keyframes container-top {
@@ -1558,7 +1582,7 @@ html {
   border-bottom: 0.5rem solid black;
   position: relative;
   -webkit-animation: z-index-position 10s ease-in;
-          animation: z-index-position 10s ease-in;
+  animation: z-index-position 10s ease-in;
 }
 
 .small-half-circle-top {
@@ -1581,7 +1605,7 @@ html {
   bottom: calc(-100vh - 8.125rem);
   /* bottom: calc(-100vh - 8.4375rem); */
   -webkit-animation: container-bottom 7s;
-          animation: container-bottom 7s;
+  animation: container-bottom 7s;
 }
 
 @-webkit-keyframes container-bottom {
@@ -1763,11 +1787,9 @@ html {
   }
 }
 
-@media (min-width: 1024px) {
-}
+@media (min-width: 1024px) {}
 
-@media (min-width: 1280px) {
-}
+@media (min-width: 1280px) {}
 
 @media (min-width: 1536px) {
   .\32xl\:w-4\/6 {
