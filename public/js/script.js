@@ -299,7 +299,14 @@ async function renderSmallPokemonCard(i) {
                     let renderGeneration = await generationSelected[generationKeyPosition]["pokemonGeneration"];
                     let renderId = await generationSelected[generationKeyPosition]["pokemonId"];
                     let renderName = await generationSelected[generationKeyPosition]["pokemonName"];
-                    containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(renderId, renderName, renderImage, renderColor, renderGeneration);
+                    if (j == Object.keys(generationSelected).length - 1) {
+                        let idForStyle = "auto";
+                        containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(renderId, renderName, renderImage, renderColor, renderGeneration, idForStyle);
+                    }
+                    else {
+                        let idForStyle = "0.5rem";
+                        containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(renderId, renderName, renderImage, renderColor, renderGeneration, idForStyle);
+                    }
                 }
             }
         }

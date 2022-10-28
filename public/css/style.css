@@ -1420,11 +1420,11 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: rgba(127, 140, 141, 0);
   z-index: -10;
   overflow: hidden;
   -webkit-animation: z-index-position 10s ease-in;
-  animation: z-index-position 10s ease-in;
+  animation: z-index-position 8s ease-in;
 }
 
 @-webkit-keyframes z-index-position {
@@ -1434,20 +1434,15 @@ html {
     overflow: hidden;
   }
 
-  70% {
-    background-color: #7f8c8d;
+  87.5% {
+    background-color: rgba(127, 140, 141, 1);
     overflow: hidden;
-  }
-
-  99% {
     z-index: 10;
-    background-color: #7f8c8daa;
-    overflow: hidden;
   }
 
   100% {
     z-index: -10;
-    background-color: white;
+    background-color: rgba(127, 140, 141, 0);
     overflow: hidden;
   }
 }
@@ -1458,18 +1453,15 @@ html {
     background-color: #7f8c8d
   }
 
-  70% {
-    background-color: #7f8c8d;
-  }
 
-  99% {
+  87.5% {
     z-index: 10;
-    background-color: #7f8c8daa;
+    background-color: rgba(127, 140, 141, 1);
   }
 
   100% {
     z-index: -10;
-    background-color: white;
+    background-color: rgba(127, 140, 141, 0);
   }
 }
 
@@ -1796,3 +1788,10 @@ html {
     width: 66.666667%;
   }
 }
+
+.colum-gap-inherit{
+        column-gap: inherit;}
+
+.row-gap-inherit {
+      row-gap: inherit;
+}   

@@ -381,13 +381,27 @@ async function renderSmallPokemonCard(i: number) {
                let renderName = await generationSelected[generationKeyPosition][
                   "pokemonName"
                ];
-               containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
-                  renderId,
-                  renderName,
-                  renderImage,
-                  renderColor,
-                  renderGeneration
-               );
+               if (j == Object.keys(generationSelected).length-1) {
+                  let idForStyle = "auto";
+                  containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
+                     renderId,
+                     renderName,
+                     renderImage,
+                     renderColor,
+                     renderGeneration,
+                     idForStyle
+                  );
+               } else {
+                  let idForStyle = "0.5rem";
+                  containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
+                     renderId,
+                     renderName,
+                     renderImage,
+                     renderColor,
+                     renderGeneration,
+                     idForStyle
+                  );
+               }
             }
          }
       }
@@ -668,10 +682,9 @@ function setOverflowHiddenBody() {
    }
 }
 
-
 /**
  * hid the simulation box from start
- * 
+ *
  */
 function hiddenSimulationBox() {
    let hiddenSimulationBox = document.getElementById(
