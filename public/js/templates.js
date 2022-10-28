@@ -2,7 +2,7 @@
 function pokemonSmallCard(renderId, renderName, renderImage, renderColor, renderGeneration, idForStyle) {
     return `
          <div name="${renderGeneration}-show-pokemon-card" id="${renderId}" onclick="showBigPokemonCard(${renderId})"
-                  class="flex flex-col  w-26 h-28 my-2 mx-2 bg-white border border-solid border-r-05rem shadow-s cursor-pointer" style="border-color: ${renderColor}; margin-right:${idForStyle}">
+                  class="flex flex-col  w-26 h-28 my-2 mx-2 bg-white border border-solid border-r-05rem shadow-s cursor-pointer" style="border-color: ${renderColor};">
                   <div name="pokemon-number" class="w-full h-4 flex justify-end">
                      <div name="number-text"
                         class="font-normal text-xxs flex justify-center text-right px-1" style="color:${renderColor}" >#${renderId}
