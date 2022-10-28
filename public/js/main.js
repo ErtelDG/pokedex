@@ -79,7 +79,7 @@ async function showBigPokemonCardBySearch() {
                 let response = await fetch(url1 + searchPokemon);
                 let searchPokemonToJson = await response.json();
                 searchPokemonId = searchPokemonToJson["id"];
-                showBigPokemonCard(searchPokemonId);
+                await showBigPokemonCard(searchPokemonId);
                 input.value = "";
             }
         }

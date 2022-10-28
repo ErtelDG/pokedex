@@ -2,8 +2,9 @@ function autocomplete(inp, arr) {
    /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
    var currentFocus;
+
    /*execute a function when someone writes in the text field:*/
-   inp.addEventListener("input", function (e) {
+   inp.addEventListener("input", async function (e) {
       var a,
          b,
          i,
@@ -41,9 +42,18 @@ function autocomplete(inp, arr) {
                closeAllLists();
             });
             a.appendChild(b);
+
+            a.addEventListener("click", async function (e) {
+               for (i = 0; i < arr.length; i++) {
+                  if (arr[i] == inp.value) {
+                     await showBigPokemonCardBySearch();
+                  }
+               }
+            });
          }
       }
    });
+
    /*execute a function presses a key on the keyboard:*/
    inp.addEventListener("keydown", function (e) {
       var x = document.getElementById(this.id + "autocomplete-list");
