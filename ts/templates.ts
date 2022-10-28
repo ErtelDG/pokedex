@@ -349,6 +349,22 @@ function renderBigPokemonCardWithStats(renderBigPokemonCard: PokemonCard) {
 
 
             <!-- element which have position absolute -->
+            <div class="absolute top-48 left-7 cursor-pointer">
+            <svg width="0.5rem" height="0.875rem" viewBox="0 0 0.5rem 0.875rem" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+               <path
+                  d="M7.228 13.8093L7.84671 13.1907C7.99315 13.0442 7.99315 12.8068 7.84671 12.6603L2.19987 6.99999L7.84671 1.33968C7.99315 1.19324 7.99315 0.955807 7.84671 0.809338L7.228 0.190619C7.08156 0.0441818 6.84412 0.0441818 6.69765 0.190619L0.153465 6.73481C0.00702763 6.88124 0.00702763 7.11868 0.153465 7.26515L6.69765 13.8093C6.84412 13.9558 7.08156 13.9558 7.228 13.8093Z"
+                  fill="white" />
+            </svg>
+            </div>
+            <div class="absolute top-48 right-7 cursor-pointer z-10">
+            <svg width="0.5rem" height="0.875rem" viewBox="0 0 0.5rem 0.875rem" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path
+                  d="M0.772065 0.190708L0.153346 0.809395C0.0069087 0.955833 0.0069087 1.19327 0.153346 1.33974L5.80019 7.00005L0.153346 12.6604C0.0069087 12.8068 0.0069087 13.0442 0.153346 13.1907L0.772065 13.8094C0.918502 13.9559 1.15594 13.9559 1.30241 13.8094L7.8466 7.26524C7.99303 7.1188 7.99303 6.88136 7.8466 6.7349L1.30241 0.190708C1.15594 0.0442391 0.918502 0.0442391 0.772065 0.190708Z"
+                  fill="white" />
+            </svg>
+            </div>
+
 
             <!-- pokemon-image position absolute -->
             <div name="pokemon-image"
