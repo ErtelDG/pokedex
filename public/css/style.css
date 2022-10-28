@@ -1420,7 +1420,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(127, 140, 141, 0);
+  background-color: rgba(247, 247, 247,0);
   z-index: -10;
   overflow: hidden;
   -webkit-animation: z-index-position 10s ease-in;
@@ -1430,19 +1430,19 @@ html {
 @-webkit-keyframes z-index-position {
   0% {
     z-index: 0;
-    background-color: #7f8c8d;
+  background-color: rgba(247, 247, 247, 1);
     overflow: hidden;
   }
 
   87.5% {
-    background-color: rgba(127, 140, 141, 1);
+  background-color: rgba(247, 247, 247, 1);
     overflow: hidden;
     z-index: 10;
   }
 
   100% {
     z-index: -10;
-    background-color: rgba(127, 140, 141, 0);
+    background-color: rgba(247, 247, 247, 0);
     overflow: hidden;
   }
 }
@@ -1450,18 +1450,18 @@ html {
 @keyframes z-index-position {
   0% {
     z-index: 0;
-    background-color: #7f8c8d
+    background-color: rgba(247, 247, 247, 1);
   }
 
 
   87.5% {
     z-index: 10;
-    background-color: rgba(127, 140, 141, 1);
+background-color: rgba(247, 247, 247, 1);
   }
 
   100% {
     z-index: -10;
-    background-color: rgba(127, 140, 141, 0);
+  background-color: rgba(247, 247, 247, 0);
   }
 }
 
@@ -1655,7 +1655,7 @@ html {
   width: 6rem;
   height: 3rem;
   /* as the half of the width */
-  background-color: #7f8c8d;
+  background-color: rgba(247, 247, 247, 1);
   border-bottom-left-radius: 3.25rem;
   /* 100px of height + 10px of border */
   border-bottom-right-radius: 3.25rem;

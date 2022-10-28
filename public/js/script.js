@@ -136,7 +136,8 @@ function setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson, typePositi
     let type1ValueForColor = "undefined";
     for (let d = 0; d < colorCodes.length; d++) {
         const element = colorCodes[d];
-        if (element[0] == url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]) {
+        if (element[0] ==
+            url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]) {
             type1ValueForColor = element[1];
             break;
         }
@@ -259,15 +260,45 @@ async function renderSmallPokemonCard(i) {
             }
         }
     }
-    /**
-     * renderSearchList(generationSelected);
-     *
-     */
+    await rendersortBtnAz(i);
+    await sortBtnById(i);
+    azBtnNoneIdBtnGray();
+}
+/**
+ * renderSortBtns(generationSelected);
+ *
+ */
+async function rendersortBtnAz(i) {
     let sortBtn = document.getElementById("sortBtnAZ");
     if (sortBtn != null) {
         sortBtn.innerHTML = createSortBtn(i);
     }
-    pokemonsSearchId?.innerHTML;
+}
+/**
+ * render sort btn id
+ *
+ */
+async function sortBtnById(i) {
+    let sortId = document.getElementById("sortId");
+    if (sortId != null) {
+        sortId.innerHTML = createSortIdBtn(i);
+    }
+}
+function azBtnGrayIdBtnNone() {
+    let azBtnInline = document.getElementById("sortBtnAzInline");
+    let idBtnInline = document.getElementById("sortIdInline");
+    if (azBtnInline != null && idBtnInline != null) {
+        azBtnInline.classList.add("bg-gray-200");
+        idBtnInline.classList.remove("bg-gray-200");
+    }
+}
+function azBtnNoneIdBtnGray() {
+    let azBtnInline = document.getElementById("sortBtnAzInline");
+    let idBtnInline = document.getElementById("sortIdInline");
+    if (azBtnInline != null && idBtnInline != null) {
+        azBtnInline.classList.remove("bg-gray-200");
+        idBtnInline.classList.add("bg-gray-200");
+    }
 }
 /**
  * function sort the current generation
@@ -291,6 +322,7 @@ async function sortPokemonAZ(generation) {
             renderSortPokemonCard(generation, generation[element]["pokemonId"]);
         }
     }
+    azBtnGrayIdBtnNone();
 }
 /**
  * function create all small pokemon card for the current generation

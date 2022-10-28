@@ -39,9 +39,10 @@ async function init() {
     clearContainerWithSmallPokemonCards();
     await loadPokemonBaseJSON();
     await sortPokemonToGeneration();
-    renderSmallPokemonCard(1);
+    await renderSmallPokemonCard(1);
     loadPokemonNamesInArray();
     hiddenSimulationBox();
+    azBtnNoneIdBtnGray();
 }
 /**
  * function => close big pokemon card

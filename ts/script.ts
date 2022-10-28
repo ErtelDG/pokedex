@@ -193,13 +193,16 @@ function setColorCodeCurrentPokemon(
    typePosition: number
 ) {
    let type1ValueForColor: string = "undefined";
-    for (let d = 0; d < colorCodes.length; d++) {
-   const element = colorCodes[d];
-   if (element[0] ==  url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]){
-      type1ValueForColor = element[1];
-      break
+   for (let d = 0; d < colorCodes.length; d++) {
+      const element = colorCodes[d];
+      if (
+         element[0] ==
+         url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]
+      ) {
+         type1ValueForColor = element[1];
+         break;
+      }
    }
-  }
    return type1ValueForColor;
 }
 
@@ -327,7 +330,7 @@ async function renderSmallPokemonCard(i: number) {
                let renderName = await generationSelected[generationKeyPosition][
                   "pokemonName"
                ];
-               if (j == Object.keys(generationSelected).length-1) {
+               if (j == Object.keys(generationSelected).length - 1) {
                   let idForStyle = "auto";
                   containerRenderAllPokemonSmall.innerHTML += pokemonSmallCard(
                      renderId,
@@ -352,18 +355,49 @@ async function renderSmallPokemonCard(i: number) {
          }
       }
    }
+   await rendersortBtnAz(i);
+   await sortBtnById(i);
+   azBtnNoneIdBtnGray();
 
-   /**
-    * renderSearchList(generationSelected);
-    *
-    */
+}
 
+/**
+ * renderSortBtns(generationSelected);
+ *
+ */
+async function rendersortBtnAz(i: number) {
    let sortBtn = document.getElementById("sortBtnAZ");
    if (sortBtn != null) {
       sortBtn.innerHTML = createSortBtn(i);
    }
+}
+/**
+ * render sort btn id
+ *
+ */
+async function sortBtnById(i: number) {
+   let sortId = document.getElementById("sortId");
+   if (sortId != null) {
+      sortId.innerHTML = createSortIdBtn(i);
+   }
+}
 
-   pokemonsSearchId?.innerHTML;
+function azBtnGrayIdBtnNone() {
+   let azBtnInline = document.getElementById("sortBtnAzInline") as HTMLElement;
+   let idBtnInline = document.getElementById("sortIdInline") as HTMLElement;
+   if (azBtnInline != null && idBtnInline != null) {
+      azBtnInline.classList.add("bg-gray-200");
+      idBtnInline.classList.remove("bg-gray-200");
+   }
+}
+
+function azBtnNoneIdBtnGray() {
+   let azBtnInline = document.getElementById("sortBtnAzInline") as HTMLElement;
+   let idBtnInline = document.getElementById("sortIdInline") as HTMLElement;
+   if (azBtnInline != null && idBtnInline != null) {
+      azBtnInline.classList.remove("bg-gray-200");
+      idBtnInline.classList.add("bg-gray-200");
+   }
 }
 
 /**
@@ -396,6 +430,7 @@ async function sortPokemonAZ(generation: any) {
          renderSortPokemonCard(generation, generation[element]["pokemonId"]);
       }
    }
+   azBtnGrayIdBtnNone();
 }
 
 /**
