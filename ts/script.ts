@@ -193,67 +193,13 @@ function setColorCodeCurrentPokemon(
    typePosition: number
 ) {
    let type1ValueForColor: string = "undefined";
-   switch (
-      url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]
-   ) {
-      case "rock":
-         type1ValueForColor = "#B69E31";
-         break;
-      case "ghost":
-         type1ValueForColor = "#70559B";
-         break;
-      case "steel":
-         type1ValueForColor = "#B7B9D0";
-         break;
-      case "water":
-         type1ValueForColor = "#6493EB";
-         break;
-      case "grass":
-         type1ValueForColor = "#74CB48";
-         break;
-      case "psychic":
-         type1ValueForColor = "#FB5584";
-         break;
-      case "ice":
-         type1ValueForColor = "#9AD6DF";
-         break;
-      case "dark":
-         type1ValueForColor = "#75574C";
-         break;
-      case "fairy":
-         type1ValueForColor = "#E69EAC";
-         break;
-      case "normal":
-         type1ValueForColor = "#AAA67F";
-         break;
-      case "fighting":
-         type1ValueForColor = "#C12239";
-         break;
-      case "flying":
-         type1ValueForColor = "#A891EC";
-         break;
-      case "poison":
-         type1ValueForColor = "#A43E9E";
-         break;
-      case "ground":
-         type1ValueForColor = "#DEC16B";
-         break;
-      case "bug":
-         type1ValueForColor = "#A7B723";
-         break;
-      case "fire":
-         type1ValueForColor = "#F57D31";
-         break;
-      case "electric":
-         type1ValueForColor = "#F9CF30";
-         break;
-      case "dragon":
-         type1ValueForColor = "#7037FF";
-         break;
-      default:
-         type1ValueForColor = "#000000";
-         break;
+    for (let d = 0; d < colorCodes.length; d++) {
+   const element = colorCodes[d];
+   if (element[0] ==  url1responseCurrentPokemonAsJson["types"][typePosition]["type"]["name"]){
+      type1ValueForColor = element[1];
+      break
    }
+  }
    return type1ValueForColor;
 }
 
