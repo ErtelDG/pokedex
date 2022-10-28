@@ -28,6 +28,18 @@ async function showBigPokemonCard(idPokemon) {
     let color = setColorCodeCurrentPokemon(url1responseCurrentPokemonAsJson, 0);
     let renderBigPokemonCard = await createAPokemonObject(url1responseCurrentPokemonAsJson, url2responseCurrentPokemonAsJson, color, flavorNewFixed, type2, abilities2, color2);
     renderBigCard(renderBigPokemonCard);
+    if (idPokemon <= 1) {
+        let arrowSmallLeft = document.getElementById("arrow-small-left");
+        if (arrowSmallLeft != null) {
+            arrowSmallLeft.style.display = "none";
+        }
+    }
+    if (idPokemon >= maxPokemons) {
+        let arrowSmallRight = document.getElementById("arrow-small-right");
+        if (arrowSmallRight != null) {
+            arrowSmallRight.style.display = "none";
+        }
+    }
     setAllUndefinedStatsDisplayNone(renderBigPokemonCard);
     setOverflowHiddenBody();
 }

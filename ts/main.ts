@@ -38,6 +38,24 @@ async function showBigPokemonCard(idPokemon: number) {
       color2
    );
    renderBigCard(renderBigPokemonCard);
+   
+   if (idPokemon <= 1) {
+      let arrowSmallLeft = document.getElementById(
+         "arrow-small-left"
+      ) as HTMLElement;
+      if (arrowSmallLeft != null) {
+         arrowSmallLeft.style.display = "none";
+      }
+   }
+   if (idPokemon >= maxPokemons) {
+      let arrowSmallRight = document.getElementById(
+         "arrow-small-right"
+      ) as HTMLElement;
+      if (arrowSmallRight != null) {
+         arrowSmallRight.style.display = "none";
+      }
+   }
+
    setAllUndefinedStatsDisplayNone(renderBigPokemonCard);
    setOverflowHiddenBody();
 }

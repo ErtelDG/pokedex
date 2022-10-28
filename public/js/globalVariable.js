@@ -2,7 +2,7 @@
 // global variable who need in the project for all and rendering!
 let currentPokemon = 1;
 let intermediateValue = 181;
-let maxPokemons = 200;
+let maxPokemons = 905;
 let generation1 = {};
 let generation2 = {};
 let generation3 = {};
