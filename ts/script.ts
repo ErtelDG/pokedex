@@ -352,7 +352,8 @@ async function renderSmallPokemonCard(i: number) {
                   );
                }
             }
-         }
+         } 
+         containerRenderAllPokemonSmall.innerHTML += `<div class="flex1"></div>`;
       }
    }
    await rendersortBtnAz(i);

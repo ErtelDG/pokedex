@@ -258,6 +258,7 @@ async function renderSmallPokemonCard(i) {
                     }
                 }
             }
+            containerRenderAllPokemonSmall.innerHTML += `<div class="flex1" flex flex-col  w-26 h-28 my-2 mx-2 bg-white border border-solid border-r-05rem shadow-s cursor-pointer></div>`;
         }
     }
     await rendersortBtnAz(i);

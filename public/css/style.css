@@ -1815,3 +1815,7 @@ html {
 .z-10 {
   z-index: 10;
 }
+
+.flex1 {
+  flex: 1;
+}
